@@ -20,3 +20,7 @@ sudo apt-get install -y python-is-python3
 
 sudo pip3 install flask
 
+
+sudo ln -sT ~/flaskapp /var/www/html/flaskapp
+
+
