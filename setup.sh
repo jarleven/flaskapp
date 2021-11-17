@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 sudo apt remove -y python2
 sudo apt remove -y python-is-python2
 sudo apt autoremove -y --purge
@@ -29,4 +31,6 @@ sudo cp -r flaskapp/ /var/www/html
 #
 # sudo -u www-data ls -lah /var/www/html/flaskapp
 
+# You need to edit the file below manually
+sudo vi /etc/apache2/sites-enabled/000-default.conf
 
