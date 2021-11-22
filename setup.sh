@@ -1,6 +1,7 @@
 #!/bin/bash
 
-
+# Credits to :
+# https://github.com/naztronaut/RaspberryPi-browser-led-control/tree/master/utils
 
 
 
