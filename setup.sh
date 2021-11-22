@@ -1,5 +1,14 @@
 #!/bin/bash
 
+
+###
+# To run the script :
+: '
+
+wget https://raw.githubusercontent.com/jarleven/flaskapp/main/setup.sh && chmod +x setup.sh && ./setup.sh
+
+'
+
 # Credits to :
 # https://github.com/naztronaut/RaspberryPi-browser-led-control/tree/master/utils
 
