@@ -1,7 +1,10 @@
 #!/bin/bash
 
-
 ###
+# The script can run on a fresh Raspberry Pi, everything is downloaded, installed and configured.
+# Tested on RPi4 and Bullseye.
+# The LED is connected to GPIO18 (Pin 12 on the Raspberry Pi).
+# https://el3.no/wp-content/uploads/2020/10/GPIO-Pinout-Diagram-2.png
 # To run the script :
 : '
 
@@ -11,8 +14,6 @@ wget https://raw.githubusercontent.com/jarleven/flaskapp/main/setup.sh && chmod 
 
 # Credits to :
 # https://github.com/naztronaut/RaspberryPi-browser-led-control/tree/master/utils
-
-
 
 
 sudo apt update
@@ -52,19 +53,16 @@ sudo wget https://raw.githubusercontent.com/naztronaut/RaspberryPi-browser-led-c
 sudo mkdir /var/www/led
 cd /var/www/led
 
-sudo chown -R pi:pi .
-
 sudo wget https://raw.githubusercontent.com/naztronaut/RaspberryPi-RGBW-Control/master/utils/activate_this.py
 
 sudo wget https://raw.githubusercontent.com/naztronaut/RaspberryPi-browser-led-control/master/led/led.py
 sudo wget https://raw.githubusercontent.com/naztronaut/RaspberryPi-browser-led-control/master/led/led.wsgi
 
+sudo chown -R pi:pi .
 
-
-# Modify led.wsgi
+# Modify led.wsgi as it's not in a virtual environment
 # activate_this = '/var/www/led/activate_this.py'
 sudo sed -i "s/activate_this = '\/var\/www\/led\/venv\/bin\/activate_this.py'/activate_this = '\/var\/www\/led\/activate_this.py'/g" led.wsgi
-
 
 
 
