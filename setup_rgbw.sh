@@ -54,32 +54,7 @@ sudo pip3 install RPi.GPIO
 
 
 
-
-cd /var/www/html
-sudo rm index.html 
-sudo wget https://raw.githubusercontent.com/naztronaut/RaspberryPi-browser-led-control/master/index.html
-sudo wget https://raw.githubusercontent.com/naztronaut/RaspberryPi-browser-led-control/master/script.js
-sudo wget https://raw.githubusercontent.com/naztronaut/RaspberryPi-browser-led-control/master/style.css
-
-cd /etc/apache2/sites-available
-sudo wget https://raw.githubusercontent.com/naztronaut/RaspberryPi-browser-led-control/master/utils/apache-led.conf
-
-
-sudo mkdir /var/www/led
-cd /var/www/led
-
-sudo wget https://raw.githubusercontent.com/naztronaut/RaspberryPi-RGBW-Control/master/utils/activate_this.py
-
-sudo wget https://raw.githubusercontent.com/naztronaut/RaspberryPi-browser-led-control/master/led/led.py
-sudo wget https://raw.githubusercontent.com/naztronaut/RaspberryPi-browser-led-control/master/led/led.wsgi
-
-sudo chown -R pi:pi .
-
-# Modify led.wsgi as it's not in a virtual environment
-# activate_this = '/var/www/led/activate_this.py'
-sudo sed -i "s/activate_this = '\/var\/www\/led\/venv\/bin\/activate_this.py'/activate_this = '\/var\/www\/led\/activate_this.py'/g" led.wsgi
-
-
+git clone https://github.com/naztronaut/RaspberryPi-RGBW-Control.git
 
 sudo a2ensite apache-led.conf
 sudo a2dissite 000-default.conf
