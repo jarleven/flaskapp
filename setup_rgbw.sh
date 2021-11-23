@@ -50,13 +50,55 @@ sudo apt install -y libapache2-mod-wsgi-py3
 sudo apt-get install -y python-is-python3
 
 sudo pip3 install flask
-sudo pip3 install RPi.GPIO
+#sudo pip3 install RPi.GPIO
 
 
 
 git clone https://github.com/naztronaut/RaspberryPi-RGBW-Control.git
 
-sudo a2ensite apache-led.conf
+
+
+sudo rm /var/www/html/index.html
+
+sudo cp ~/RaspberryPi-RGBW-Control/index.html  /var/www/html/
+sudo cp ~/RaspberryPi-RGBW-Control/script.js   /var/www/html/
+sudo cp ~/RaspberryPi-RGBW-Control/style.css   /var/www/html/
+sudo cp -r ~/RaspberryPi-RGBW-Control/static   /var/www/html/
+
+sudo mkdir /var/www/html/rgbw
+
+sudo cp ~/RaspberryPi-RGBW-Control/utils/activate_this.py /var/www/html/rgbw/
+
+sudo cp ~/RaspberryPi-RGBW-Control/rgb.json /var/www/html/rgbw/
+sudo cp ~/RaspberryPi-RGBW-Control/rgbw.py /var/www/html/rgbw/
+sudo cp ~/RaspberryPi-RGBW-Control/rgbw.wsgi /var/www/html/rgbw/
+sudo cp ~/RaspberryPi-RGBW-Control/white.json /var/www/html/rgbw/
+
+
+sudo cp ~/RaspberryPi-RGBW-Control/utils/apache-led.conf  /etc/apache2/sites-available/
+
+
+sudo chown -R pi:pi /var/www/html/rgbw
+
+
+cp ~/RaspberryPi-RGBW-Control/utils/pigpio.zip .
+unzip pigpio.zip
+cd PIGPIO
+make
+sudo make install
+
+
+
+
+sudo a2dissite apache-led.conf
 sudo a2dissite 000-default.conf
+
+sudo a2ensite apache-led.conf
 sudo service apache2 restart
+
 #sudo systemctl reload apache2
+
+# Debugging Apache2
+# tail -f /var/log/apache2/other_vhosts_access.log
+# tail -f /var/log/apache2/error.log
+
