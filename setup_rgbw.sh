@@ -14,7 +14,7 @@
 wget https://raw.githubusercontent.com/jarleven/flaskapp/main/setup_rgbw.sh && chmod +x setup_rgbw.sh && ./setup_rgbw.sh
 
 '
-
+: '
 ```
 
   Color	   GPIO    40-Pin header
@@ -25,6 +25,8 @@ wget https://raw.githubusercontent.com/jarleven/flaskapp/main/setup_rgbw.sh && c
   White     18        12
 
 ```
+'
+
 # Credits to :
 # https://github.com/naztronaut/RaspberryPi-RGBW-Control
 
