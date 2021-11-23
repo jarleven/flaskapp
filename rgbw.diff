@@ -1,0 +1,96 @@
+diff --git a/rgbw.py b/rgbw.py
+index 2f52aa9..de4057d 100644
+--- a/rgbw.py
++++ b/rgbw.py
+@@ -18,7 +18,7 @@ def led():
+     pi.set_PWM_dutycycle(24, red)
+     pi.set_PWM_dutycycle(20, blue)
+     pi.set_PWM_dutycycle(25, green)
+-    # pi.set_PWM_dutycycle(18, white)
++    pi.set_PWM_dutycycle(18, white)
+ 
+     # return jsonify({"red": red, "green": green, "blue": blue, "white": white})
+     with open('/var/www/html/rgbw/rgb.json', 'w') as f:
+diff --git a/rgbw.wsgi b/rgbw.wsgi
+index c18b955..6c4d587 100644
+--- a/rgbw.wsgi
++++ b/rgbw.wsgi
+@@ -1,10 +1,10 @@
+ #!/usr/bin/env python3
+ 
+-activate_this = '/var/www/html/rgbw/venv/bin/activate_this.py'
++activate_this = '/var/www/html/rgbw/activate_this.py'
+ with open(activate_this) as file_:
+         exec(file_.read(), dict(__file__=activate_this))
+ 
+ import sys
+ sys.path.insert(0, '/var/www/html/rgbw')
+ 
+-from rgbw import app as application
+\ No newline at end of file
++from rgbw import app as application
+diff --git a/script.js b/script.js
+index b36cd31..6929a82 100644
+--- a/script.js
++++ b/script.js
+@@ -1,5 +1,5 @@
+ let config = {
+-    url: 'http://192.168.1.225',
++    url: 'http://192.168.3.111',
+ };
+ 
+ let currentColors = {};
+@@ -119,7 +119,7 @@ $(document).ready(function() {
+         let queryBuilder = `red=${red}&green=${green}&blue=${blue}`;
+ 
+         $.ajax({
+-            url: `${config.url}/api/lr/?${queryBuilder}&${cacheBuster}`,
++            url: `${config.url}/html/rgbw/?${queryBuilder}&${cacheBuster}`,
+             method: 'GET',
+             dataType: 'json',
+             cache: false,
+@@ -132,7 +132,7 @@ $(document).ready(function() {
+ 
+     function changeWhiteLed(frequency){
+         $.ajax({
+-            url: `${config.url}/api/lr/white?white=${frequency}&${cacheBuster}`,
++            url: `${config.url}/html/rgbw/white?white=${frequency}&${cacheBuster}`,
+             method: 'GET',
+             success: function(result) {
+                 console.log(result);
+@@ -168,7 +168,7 @@ $(document).ready(function() {
+     // Get RGB Status so Color Picker in UI is set to that color on page load
+     function getLEDStatus(color) {
+         $.ajax({
+-            url: `${config.url}/api/lr/getStatus?colors=${color}&${cacheBuster}`,
++            url: `${config.url}/html/rgbw/getStatus?colors=${color}&${cacheBuster}`,
+             method: 'GET',
+             success: function(result) {
+                 if(color == 'rgb') {
+@@ -184,4 +184,4 @@ $(document).ready(function() {
+         });
+     }
+ 
+-});
+\ No newline at end of file
++});
+diff --git a/utils/apache-led.conf b/utils/apache-led.conf
+index 816414f..6a25cb9 100644
+--- a/utils/apache-led.conf
++++ b/utils/apache-led.conf
+@@ -1,7 +1,7 @@
+ <VirtualHost *:80>
+         ServerName rgbw
+         WSGIDaemonProcess rgbw user=pi group=www-data threads=5
+-        WSGIScriptAlias /api/lr /var/www/html/rgbw/rgbw.wsgi
++        WSGIScriptAlias /html/rgbw /var/www/html/rgbw/rgbw.wsgi
+         <Directory /var/www/html/rgbw>
+                 WSGIProcessGroup rgbw
+                 WSGIApplicationGroup &{GLOBAL}
+@@ -9,4 +9,4 @@
+                 # If you want to use the line below, make sure you run `sudo a2enmod headers`
+                 Header set Access-Control-Allow-Origin "*"
+         </Directory>
+-</VirtualHost>
+\ No newline at end of file
++</VirtualHost>
