@@ -56,7 +56,11 @@ sudo pip3 install flask
 
 git clone https://github.com/naztronaut/RaspberryPi-RGBW-Control.git
 
-
+# Apply my changes
+cd RaspberryPi-RGBW-Control
+wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rgbw.diff
+git apply rgbw.diff
+cd ~
 
 sudo rm /var/www/html/index.html
 
@@ -80,6 +84,7 @@ sudo cp ~/RaspberryPi-RGBW-Control/utils/apache-led.conf  /etc/apache2/sites-ava
 
 sudo chown -R pi:pi /var/www/html/rgbw
 
+# Install pigpio daemon
 
 cp ~/RaspberryPi-RGBW-Control/utils/pigpio.zip .
 unzip pigpio.zip
@@ -103,64 +108,13 @@ sudo service apache2 restart
 # tail -f /var/log/apache2/error.log
 
 # In the crontab add
-# crontab -e
-# 
 # @reboot sudo pigpiod
 
-# My changes
-pi@raspberrypi:~ $ diff ~/RaspberryPi-RGBW-Control/utils/apache-led.conf  /etc/apache2/sites-available/apache-led.conf
-4c4
-<         WSGIScriptAlias /api/lr /var/www/html/rgbw/rgbw.wsgi
----
->         WSGIScriptAlias /html/rgbw /var/www/html/rgbw/rgbw.wsgi
-12c12
-< </VirtualHost>
-\ No newline at end of file
----
-> </VirtualHost>
+echo "Add entry to crontab"
+echo "sudo crontab -e"
+echo ""
+echo "@reboot sudo pigpiod"
 
-pi@raspberrypi:~ $ diff ~/RaspberryPi-RGBW-Control/script.js  /var/www/html/script.js
-2c2
-<     url: 'http://192.168.1.225',
----
->     url: 'http://192.168.3.111',
-122c122
-<             url: `${config.url}/api/lr/?${queryBuilder}&${cacheBuster}`,
----
->             url: `${config.url}/html/rgbw/?${queryBuilder}&${cacheBuster}`,
-135c135
-<             url: `${config.url}/api/lr/white?white=${frequency}&${cacheBuster}`,
----
->             url: `${config.url}/html/rgbw/white?white=${frequency}&${cacheBuster}`,
-171c171
-<             url: `${config.url}/api/lr/getStatus?colors=${color}&${cacheBuster}`,
----
->             url: `${config.url}/html/rgbw/getStatus?colors=${color}&${cacheBuster}`,
-187c187
-< });
-\ No newline at end of file
----
-> });
-
-
-
-pi@raspberrypi:~ $ diff ~/RaspberryPi-RGBW-Control/rgbw.py /var/www/html/rgbw/rgbw.py
-21c21
-<     # pi.set_PWM_dutycycle(18, white)
----
->     pi.set_PWM_dutycycle(18, white)
-
-
-pi@raspberrypi:~ $ diff ~/RaspberryPi-RGBW-Control/rgbw.wsgi /var/www/html/rgbw/rgbw.wsgi
-3c3
-< activate_this = '/var/www/html/rgbw/venv/bin/activate_this.py'
----
-> activate_this = '/var/www/html/rgbw/activate_this.py'
-10c10
-< from rgbw import app as application
-\ No newline at end of file
----
-> from rgbw import app as application
 
 
 
