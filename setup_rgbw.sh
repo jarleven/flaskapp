@@ -52,6 +52,8 @@ sudo apt-get install -y python-is-python3
 sudo pip3 install flask
 #sudo pip3 install RPi.GPIO
 
+# TODO: Check what/why
+sudo a2enmod headers
 
 
 git clone https://github.com/naztronaut/RaspberryPi-RGBW-Control.git
