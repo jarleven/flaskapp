@@ -5,15 +5,28 @@
 # Tested on RPi4 and Bullseye.
 # The LED is connected to GPIO18 (Pin 12 on the Raspberry Pi).
 # https://el3.no/wp-content/uploads/2020/10/GPIO-Pinout-Diagram-2.png
+
+
+
 # To run the script :
 : '
 
-wget https://raw.githubusercontent.com/jarleven/flaskapp/main/setup.sh && chmod +x setup.sh && ./setup.sh
+wget https://raw.githubusercontent.com/jarleven/flaskapp/main/setup_rgbw.sh && chmod +x setup_rgbw.sh && ./setup_rgbw.sh
 
 '
 
+```
+
+  Color	   GPIO    40-Pin header
+ --------------------------------
+  Red       24        18  
+  Green     25        22
+  Blue      20        38
+  White     18        12
+
+```
 # Credits to :
-# https://github.com/naztronaut/RaspberryPi-browser-led-control/tree/master/utils
+# https://github.com/naztronaut/RaspberryPi-RGBW-Control
 
 
 sudo apt update
