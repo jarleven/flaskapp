@@ -59,6 +59,8 @@ sudo a2enmod headers
 git clone https://github.com/naztronaut/RaspberryPi-RGBW-Control.git
 
 # Apply my changes
+# ~/RaspberryPi-RGBW-Control $ git diff > rgbw.diff
+
 cd RaspberryPi-RGBW-Control
 wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rgbw.diff
 git apply rgbw.diff
