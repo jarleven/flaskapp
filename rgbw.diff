@@ -1,16 +1,92 @@
+diff --git a/index.html b/index.html
+index d492813..b07d182 100644
+--- a/index.html
++++ b/index.html
+@@ -21,12 +21,7 @@
+             <div class="p-2"><span id="subtitle">RGBW Lights</span></div>
+         </nav>
+         <div class="container">
+-            <div class="row">
+-                <div class="col">
+-                    <div id="whiteSlider"></div>
+-                </div>
+-            </div>
+-            <div class="row">
++	    <div class="row">
+                 <div class="col">
+                     <div id="slider"></div>
+                 </div>
+@@ -38,4 +33,4 @@
+             </div>
+         </div>
+     </body>
+-</html>
+\ No newline at end of file
++</html>
 diff --git a/rgbw.py b/rgbw.py
-index 2f52aa9..de4057d 100644
+index 2f52aa9..f1fbd4e 100644
 --- a/rgbw.py
 +++ b/rgbw.py
-@@ -18,7 +18,7 @@ def led():
+@@ -1,46 +1,32 @@
+ from flask import Flask, request, jsonify
+ import pigpio
+ import json
+-
++import logging
++ 
+ 
+ app = Flask(__name__)
+ pi = pigpio.pi()
+ 
++# Log file ends up in/home/pi
++logging.basicConfig(filename='record.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
++
++app.logger.info('Is this ever printed ')
++app.logger.warning('Can you see this ')
++
++
+ # {{url}}/led?status=on
+ @app.route('/', methods=['GET'])
+ def led():
+ 
+-    red = int(request.args.get('red')) if (request.args.get('red')) else 0
++    red =   int(request.args.get('red'))   if (request.args.get('red'))   else 0
+     green = int(request.args.get('green')) if (request.args.get('green')) else 0
+-    blue = int(request.args.get('blue')) if (request.args.get('blue')) else 0
+-    # white = int(request.args.get('white')) if (request.args.get('white')) else 0
++    blue =  int(request.args.get('blue'))  if (request.args.get('blue'))  else 0
++    
++    app.logger.info('RGB LED function')
+ 
      pi.set_PWM_dutycycle(24, red)
      pi.set_PWM_dutycycle(20, blue)
      pi.set_PWM_dutycycle(25, green)
 -    # pi.set_PWM_dutycycle(18, white)
-+    pi.set_PWM_dutycycle(18, white)
  
-     # return jsonify({"red": red, "green": green, "blue": blue, "white": white})
-     with open('/var/www/html/rgbw/rgb.json', 'w') as f:
+-    # return jsonify({"red": red, "green": green, "blue": blue, "white": white})
+-    with open('/var/www/html/rgbw/rgb.json', 'w') as f:
+-        json.dump({"red": red, "green": green, "blue": blue}, f)
+     return jsonify({"red": red, "green": green, "blue": blue})
+ 
+-
+-# Separated white button for now so it can be controlled separately
+-# Reading/writing to JSON file: https://stackabuse.com/reading-and-writing-json-to-a-file-in-python/
+-@app.route('/white', methods=['GET'])
+-def white():
+-    white = int(request.args.get('white')) if (request.args.get('white')) else 0
+-
+-    pi.set_PWM_dutycycle(18, white)
+-    with open('/var/www/html/rgbw/white.json', 'w') as f:
+-        json.dump({"white": white}, f)
+-    return jsonify({"white": white})
+-
+-
+-@app.route('/getStatus', methods=['GET'])
+-def get_status():
+-    colors = str(request.args.get('colors'))
+-
+-    with open('/var/www/html/rgbw/' + colors + '.json', 'r') as f:
+-        return json.load(f)
 diff --git a/rgbw.wsgi b/rgbw.wsgi
 index c18b955..6c4d587 100644
 --- a/rgbw.wsgi
@@ -30,47 +106,104 @@ index c18b955..6c4d587 100644
 \ No newline at end of file
 +from rgbw import app as application
 diff --git a/script.js b/script.js
-index b36cd31..6929a82 100644
+index b36cd31..38b06a7 100644
 --- a/script.js
 +++ b/script.js
-@@ -1,5 +1,5 @@
- let config = {
+@@ -1,22 +1,11 @@
+-let config = {
 -    url: 'http://192.168.1.225',
-+    url: 'http://192.168.3.111',
- };
+-};
  
  let currentColors = {};
-@@ -119,7 +119,7 @@ $(document).ready(function() {
+ let rgbBrightnessChange = false;
+ 
+ $(document).ready(function() {
+-    // Cache buster added because caching was a big problem on mobile
+-    let cacheBuster = new Date().getTime();
+-
+-    // btnStatus();
+-    getLEDStatus('rgb');
+-    getLEDStatus('white');
+ 
+     // RGB Slider
+     let slider = document.getElementById('slider');
+-    // White Slider
+-    let wSlider = document.getElementById('whiteSlider');
+ 
+     const pickr = Pickr.create({
+         el: '.color-picker',
+@@ -119,69 +108,15 @@ $(document).ready(function() {
          let queryBuilder = `red=${red}&green=${green}&blue=${blue}`;
  
          $.ajax({
 -            url: `${config.url}/api/lr/?${queryBuilder}&${cacheBuster}`,
-+            url: `${config.url}/html/rgbw/?${queryBuilder}&${cacheBuster}`,
++            url: `/html/rgbw/?${queryBuilder}`,
              method: 'GET',
              dataType: 'json',
              cache: false,
-@@ -132,7 +132,7 @@ $(document).ready(function() {
- 
-     function changeWhiteLed(frequency){
-         $.ajax({
+             success: function (result) {
+-                // console.log(result);
+-                // console.log(currentColors);
+-            }
+-        });
+-    }
+-
+-    function changeWhiteLed(frequency){
+-        $.ajax({
 -            url: `${config.url}/api/lr/white?white=${frequency}&${cacheBuster}`,
-+            url: `${config.url}/html/rgbw/white?white=${frequency}&${cacheBuster}`,
-             method: 'GET',
-             success: function(result) {
-                 console.log(result);
-@@ -168,7 +168,7 @@ $(document).ready(function() {
-     // Get RGB Status so Color Picker in UI is set to that color on page load
-     function getLEDStatus(color) {
-         $.ajax({
--            url: `${config.url}/api/lr/getStatus?colors=${color}&${cacheBuster}`,
-+            url: `${config.url}/html/rgbw/getStatus?colors=${color}&${cacheBuster}`,
-             method: 'GET',
-             success: function(result) {
-                 if(color == 'rgb') {
-@@ -184,4 +184,4 @@ $(document).ready(function() {
+-            method: 'GET',
+-            success: function(result) {
+-                console.log(result);
++                 console.log(result);
++                 console.log(currentColors);
+             }
          });
      }
  
+-    noUiSlider.create(wSlider, {
+-        behavior: "tap",
+-        start: [100],
+-        connect: [false, true],
+-        step: 5,
+-        range: {
+-            'min': [0],
+-            'max': [100]
+-        },
+-        pips: {
+-            mode: 'values',
+-            values: [0, 25, 50, 75, 100],
+-            density: 5,
+-            format: wNumb({
+-                decimals: 0,
+-                postfix: "%"
+-            })
+-        }
+-    });
+-
+-    wSlider.noUiSlider.on('change', function(e) {
+-       let sliderVal = (wSlider.noUiSlider.get()/100);
+-       changeWhiteLed(Math.floor(sliderVal * 255));
+-    });
+-
+-    // Get RGB Status so Color Picker in UI is set to that color on page load
+-    function getLEDStatus(color) {
+-        $.ajax({
+-            url: `${config.url}/api/lr/getStatus?colors=${color}&${cacheBuster}`,
+-            method: 'GET',
+-            success: function(result) {
+-                if(color == 'rgb') {
+-                    let colors = `rgb(${result.red}, ${result.green}, ${result.blue})`;
+-                    currentColors.red = result.red;
+-                    currentColors.green = result.green;
+-                    currentColors.blue = result.blue;
+-                    pickr.setColor(colors);
+-                } else {
+-                    wSlider.noUiSlider.set(Math.floor((result.white / 255) * 100));
+-                }
+-            },
+-        });
+-    }
+-
 -});
 \ No newline at end of file
 +});
