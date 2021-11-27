@@ -1,0 +1,55 @@
+diff --git a/gamepadtest.js b/gamepadtest.js
+index bbe3370..281f539 100644
+--- a/gamepadtest.js
++++ b/gamepadtest.js
+@@ -60,6 +60,29 @@ function removegamepad(gamepad) {
+   delete controllers[gamepad.index];
+ }
+ 
++
++
++function sendData(a, b){
++        let red =   Math.round( (a+1)*100 );
++        let green = Math.round( (b+1)*100 );
++	let blue = 0;
++        let queryBuilder = `red=${red}&green=${green}&blue=${blue}`;
++
++        $.ajax({
++            url: `/html/rgbw/?${queryBuilder}`,
++            method: 'GET',
++            dataType: 'json',
++            cache: false,
++            success: function (result) {
++                 //console.log(result);
++                 //console.log(currentColors);
++            }
++        });
++}
++
++
++
++
+ function updateStatus() {
+   scangamepads();
+   for (j in controllers) {
+@@ -97,6 +120,7 @@ function updateStatus() {
+     }
+   }
+   rAF(updateStatus);
++  sendData(controller.axes[1], controller.axes[3]);
+ }
+ 
+ function scangamepads() {
+diff --git a/index.html b/index.html
+index 251734a..8ecb4e2 100644
+--- a/index.html
++++ b/index.html
+@@ -14,6 +14,8 @@ You should have received a copy of the CC0 Public Domain Dedication along with t
+ 
+ -->
+ <script type="text/javascript" src="gamepadtest.js"></script>
++<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
++
+ <style>
+ .axes {
+   padding: 1em;
