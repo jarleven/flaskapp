@@ -1,4 +1,4 @@
-
+```
 /var/log/apache2/error.log
 
 [Sat Nov 27 13:16:47.305721 2021] [mpm_event:notice] [pid 533:tid 3069977024] AH00489: Apache/2.4.51 (Raspbian) mod_wsgi/4.7.1 Python/3.9 configured -- resuming normal operation               s
@@ -18,3 +18,12 @@
 [Sat Nov 27 13:19:08.185607 2021] [wsgi:error] [pid 997:tid 3038831616]
 [Sat Nov 27 13:19:08.185650 2021] [wsgi:error] [pid 997:tid 3038831616] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+pi@raspberrypi:~ $ tail -f /var/log/apache2/error.log
+
+
+[Sat Nov 27 13:47:44.057594 2021] [wsgi:error] [pid 1882:tid 3022046208] [remote 192.168.3.167:64154]   File "/var/www/html/rgbw/rgbw.py", line 44
+[Sat Nov 27 13:47:44.057652 2021] [wsgi:error] [pid 1882:tid 3022046208] [remote 192.168.3.167:64154]     white = int(request.args.get('white')) if (request.args.get('white')) else 0
+[Sat Nov 27 13:47:44.057699 2021] [wsgi:error] [pid 1882:tid 3022046208] [remote 192.168.3.167:64154] IndentationError: unexpected indent
+
+```
