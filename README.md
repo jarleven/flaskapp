@@ -3,10 +3,22 @@ Apache2 python flask application
 
 
 
-
+#### Credits to:
 ```
-Credits to:
   https://asdkazmi.medium.com/deploying-flask-app-with-wsgi-and-apache-server-on-ubuntu-20-04-396607e0e40f
+```
+
+#### Inspiration:
+```
+wget https://raw.githubusercontent.com/luser/gamepadtest/master/gamepadtest.js
+wget https://raw.githubusercontent.com/luser/gamepadtest/master/index.html
+
+https://www.w3schools.com/graphics/game_controllers.asp
+
+https://github.com/dramasamy/virtualJoystick
+
+https://github.com/diamondx911/Elab_planner/blob/master/static/js/gamepad.js
+https://github.com/diamondx911/Elab_planner/blob/ae7e2322fc882a1e0b170619d0d813f1e1fafc0f/hello.py
 ```
 
 
