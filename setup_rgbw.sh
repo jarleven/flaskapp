@@ -75,10 +75,10 @@ sudo mkdir /var/www/html/rgbw
 
 sudo cp ~/RaspberryPi-RGBW-Control/utils/activate_this.py /var/www/html/rgbw/
 
-sudo cp ~/RaspberryPi-RGBW-Control/rgb.json /var/www/html/rgbw/
 sudo cp ~/RaspberryPi-RGBW-Control/rgbw.py /var/www/html/rgbw/
 sudo cp ~/RaspberryPi-RGBW-Control/rgbw.wsgi /var/www/html/rgbw/
-sudo cp ~/RaspberryPi-RGBW-Control/white.json /var/www/html/rgbw/
+#sudo cp ~/RaspberryPi-RGBW-Control/white.json /var/www/html/rgbw/
+#sudo cp ~/RaspberryPi-RGBW-Control/rgb.json /var/www/html/rgbw/
 
 
 sudo cp ~/RaspberryPi-RGBW-Control/utils/apache-led.conf  /etc/apache2/sites-available/
@@ -108,15 +108,19 @@ sudo service apache2 restart
 # Debugging Apache2
 # tail -f /var/log/apache2/other_vhosts_access.log
 # tail -f /var/log/apache2/error.log
+# tail -f /home/pi/record.log
 
 # In the crontab add
 # @reboot sudo pigpiod
 
+echo ""
+echo ""
 echo "Add entry to crontab"
 echo "sudo crontab -e"
 echo ""
 echo "@reboot sudo pigpiod"
-
+echo ""
+echo ""
 
 
 
