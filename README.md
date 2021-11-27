@@ -30,7 +30,7 @@ https://github.com/diamondx911/Elab_planner/blob/ae7e2322fc882a1e0b170619d0d813f
 #### bootstrap.ps1
 
 #### Find the driver named "boot" probably the raspberry Pi bootdrive
-#### Change to this drive letter and create an epty file named "ssh"
+#### Change to this drive letter and create an empty file named "ssh"
 
 ```powershell
 $MyBootDrive = (Get-Volume -FileSystemLabel boot).DriveLetter
