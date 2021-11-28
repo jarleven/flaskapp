@@ -6,7 +6,7 @@ Apache2 python flask application
 #### Credits to:
 ```
 Ted Mielczarek     https://github.com/luser/gamepadtest.git
-Nazmus Nasir      https://github.com/naztronaut/RaspberryPi-RGBW-Control
+Nazmus Nasir       https://github.com/naztronaut/RaspberryPi-RGBW-Control
 Syed Muhammad Asad https://asdkazmi.medium.com/deploying-flask-app-with-wsgi-and-apache-server-on-ubuntu-20-04-396607e0e40f
 ```
 
