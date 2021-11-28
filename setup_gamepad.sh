@@ -92,9 +92,9 @@ wget https://raw.githubusercontent.com/jarleven/flaskapp/main/gamepadtest.js
 wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rgbw.py
 wget https://raw.githubusercontent.com/jarleven/flaskapp/main/index.html
 
-sudo cp ~/RaspberryPi-RGBW-Control/rgbw.py /var/www/html/rgbw/
-sudo cp ~/RaspberryPi-RGBW-Control/index.html  /var/www/html/
-sudo cp ~/RaspberryPi-RGBW-Control/gamepad.js   /var/www/html/
+sudo cp ~/mygamepad/rgbw.py    /var/www/html/rgbw/
+sudo cp ~/mygamepad/index.html /var/www/html/
+sudo cp ~/mygamepad/gamepad.js /var/www/html/
 
 
 #sudo chown -R pi:pi /var/www/html/rgbw
@@ -115,14 +115,16 @@ sudo a2dissite apache-led.conf
 sudo a2dissite 000-default.conf
 
 sudo a2ensite apache-led.conf
-sudo service apache2 restart
+#sudo service apache2 restart
 
-#sudo systemctl reload apache2
+sudo systemctl reload apache2
 
 # Debugging Apache2
 # tail -f /var/log/apache2/other_vhosts_access.log
 # tail -f /var/log/apache2/error.log
 # tail -f /home/pi/record.log
+
+sudo pigpiod
 
 # In case the crontab does not exist we need to catch and handle some errors
 # For testing, delete the cronab for user pi with :
