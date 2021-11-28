@@ -112,17 +112,14 @@ sudo service apache2 restart
 # tail -f /var/log/apache2/error.log
 # tail -f /home/pi/record.log
 
+# In case the crontab does not exist we need to catch and handle some errors
+# For testing, delete the cronab for user pi with :
+#  crontab -r -u pi
 # In the crontab add
 # @reboot sudo pigpiod
 
-echo ""
-echo ""
-echo "Add entry to crontab"
-echo "sudo crontab -e"
-echo ""
-echo "@reboot sudo pigpiod"
-echo ""
-echo ""
+cat <(crontab -l 2>/dev/null) <(echo "@reboot sudo pigpiod") | crontab -
+
 
 
 
