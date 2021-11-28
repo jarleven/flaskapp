@@ -1,17 +1,22 @@
 #!/bin/bash
 
-###
-# The script can run on a fresh Raspberry Pi, everything is downloaded, installed and configured.
-# Tested on RPi4 and Bullseye.
-
-
-
 # To run the script :
 : '
 
 wget https://raw.githubusercontent.com/jarleven/flaskapp/main/setup_gamepad.sh && chmod +x setup_gamepad.sh && ./setup_gamepad.sh
 
 '
+
+
+
+###
+# The script can run on a fresh Raspberry Pi, everything is downloaded, installed and configured.
+# Tested on RPi4 and Bullseye.
+
+# Credits to :
+# Ted Mielczarek https://github.com/luser/gamepadtest.git
+# Nazmus Nasir https://github.com/naztronaut/RaspberryPi-RGBW-Control
+
 : '
 ```
   Function        GPIO    40-Pin header
@@ -22,11 +27,6 @@ wget https://raw.githubusercontent.com/jarleven/flaskapp/main/setup_gamepad.sh &
   Left Reverse     18        12
 ```
 '
-
-# Credits to :
-# Ted Mielczarek https://github.com/luser/gamepadtest.git
-# Nazmus Nasir https://github.com/naztronaut/RaspberryPi-RGBW-Control
-
 
 
 sudo apt update
@@ -94,7 +94,7 @@ wget https://raw.githubusercontent.com/jarleven/flaskapp/main/index.html
 
 sudo cp ~/mygamepad/rgbw.py    /var/www/html/rgbw/
 sudo cp ~/mygamepad/index.html /var/www/html/
-sudo cp ~/mygamepad/gamepad.js /var/www/html/
+sudo cp ~/mygamepad/gamepadtest.js /var/www/html/
 
 
 #sudo chown -R pi:pi /var/www/html/rgbw
