@@ -3,8 +3,6 @@
 ###
 # The script can run on a fresh Raspberry Pi, everything is downloaded, installed and configured.
 # Tested on RPi4 and Bullseye.
-# The LED is connected to GPIO18 (Pin 12 on the Raspberry Pi).
-# https://el3.no/wp-content/uploads/2020/10/GPIO-Pinout-Diagram-2.png
 
 
 
@@ -16,19 +14,19 @@ wget https://raw.githubusercontent.com/jarleven/flaskapp/main/setup_gamepad.sh &
 '
 : '
 ```
-
-  Color	   GPIO    40-Pin header
- --------------------------------
-  Red       24        18  
-  Green     25        22
-  Blue      20        38
-  White     18        12
-
+  Function        GPIO    40-Pin header
+ ---------------------------------------
+  Right Forward    24        18  
+  Right Reverse    25        22
+  Left Forward     20        38
+  Left Reverse     18        12
 ```
 '
 
 # Credits to :
-# https://github.com/naztronaut/RaspberryPi-RGBW-Control
+# Ted Mielczarek https://github.com/luser/gamepadtest.git
+# Nazmus Nasir https://github.com/naztronaut/RaspberryPi-RGBW-Control
+
 
 
 sudo apt update
@@ -68,16 +66,16 @@ cd ~
 
 sudo rm /var/www/html/index.html
 
-sudo cp ~/RaspberryPi-RGBW-Control/index.html  /var/www/html/
-sudo cp ~/RaspberryPi-RGBW-Control/script.js   /var/www/html/
-sudo cp ~/RaspberryPi-RGBW-Control/style.css   /var/www/html/
-sudo cp -r ~/RaspberryPi-RGBW-Control/static   /var/www/html/
+#sudo cp ~/RaspberryPi-RGBW-Control/index.html  /var/www/html/
+#sudo cp ~/RaspberryPi-RGBW-Control/script.js   /var/www/html/
+#sudo cp ~/RaspberryPi-RGBW-Control/style.css   /var/www/html/
+#sudo cp -r ~/RaspberryPi-RGBW-Control/static   /var/www/html/
 
 sudo mkdir /var/www/html/rgbw
 
 sudo cp ~/RaspberryPi-RGBW-Control/utils/activate_this.py /var/www/html/rgbw/
 
-sudo cp ~/RaspberryPi-RGBW-Control/rgbw.py /var/www/html/rgbw/
+#sudo cp ~/RaspberryPi-RGBW-Control/rgbw.py /var/www/html/rgbw/
 sudo cp ~/RaspberryPi-RGBW-Control/rgbw.wsgi /var/www/html/rgbw/
 #sudo cp ~/RaspberryPi-RGBW-Control/white.json /var/www/html/rgbw/
 #sudo cp ~/RaspberryPi-RGBW-Control/rgb.json /var/www/html/rgbw/
@@ -86,7 +84,21 @@ sudo cp ~/RaspberryPi-RGBW-Control/rgbw.wsgi /var/www/html/rgbw/
 sudo cp ~/RaspberryPi-RGBW-Control/utils/apache-led.conf  /etc/apache2/sites-available/
 
 
-sudo chown -R pi:pi /var/www/html/rgbw
+cd ~
+mkdir mygamepad
+cd mygamepad
+
+wget https://raw.githubusercontent.com/jarleven/flaskapp/main/gamepadtest.js
+wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rgbw.py
+wget https://raw.githubusercontent.com/jarleven/flaskapp/main/index.html
+
+sudo cp ~/RaspberryPi-RGBW-Control/rgbw.py /var/www/html/rgbw/
+sudo cp ~/RaspberryPi-RGBW-Control/index.html  /var/www/html/
+sudo cp ~/RaspberryPi-RGBW-Control/gamepad.js   /var/www/html/
+
+
+#sudo chown -R pi:pi /var/www/html/rgbw
+sudo chown -R pi:pi /var/www/html
 
 # Install pigpio daemon
 
