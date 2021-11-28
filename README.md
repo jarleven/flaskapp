@@ -48,3 +48,20 @@ Set-Location -Path c:
 ```
 
 
+The wpa_supplicant.conf file 
+```linux
+country=NO
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+	ssid="YOUR_SSID"
+	psk="YOUR_WIFI_PASSWORD"
+	proto=RSN
+	key_mgmt=WPA-PSK
+	pairwise=CCMP
+	auth_alg=OPEN
+}
+```
+
+
