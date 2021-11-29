@@ -30,6 +30,9 @@ https://github.com/diamondx911/Elab_planner
 #### Change to this drive letter and create an empty file named "ssh"
 
 ```powershell
+
+#powershell -ExecutionPolicy ByPass -File .\bootstrap.ps1
+
 $MyBootDrive = (Get-Volume -FileSystemLabel boot).DriveLetter
 
 $MyBootDrive += ':'
