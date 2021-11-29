@@ -73,7 +73,13 @@ sudo rm /var/www/html/index.html
 
 sudo mkdir /var/www/html/rgbw
 
+
+# As long as there is only one environmet, we probably don't need the activate_this.py script
+# https://modwsgi.readthedocs.io/en/develop/user-guides/virtual-environments.html
+# The rgbw.wsgi should be modifyed eaqually
 sudo cp ~/RaspberryPi-RGBW-Control/utils/activate_this.py /var/www/html/rgbw/
+
+
 
 #sudo cp ~/RaspberryPi-RGBW-Control/rgbw.py /var/www/html/rgbw/
 sudo cp ~/RaspberryPi-RGBW-Control/rgbw.wsgi /var/www/html/rgbw/
