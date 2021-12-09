@@ -63,7 +63,7 @@ cd ~/flaskapp/rov
 
 sudo rm /var/www/html/index.html
 
-mkdir /var/www/html/rov
+sudo mkdir /var/www/html/rov
 
 sudo cp apache-rov.conf /etc/apache2/sites-available/
 
