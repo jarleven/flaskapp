@@ -81,7 +81,7 @@ sudo pigpiod
 
 
 #sudo a2dissite apache-rov.conf
-#sudo a2dissite 000-default.conf
+sudo a2dissite 000-default.conf
 
 sudo a2ensite apache-rov.conf
 #sudo service apache2 restart
