@@ -49,7 +49,7 @@ sudo apt-get install -y python-is-python3
 
 
 sudo apt install -y pigpio
-sudo atp install -y python3-pigpio
+sudo apt install -y python3-pigpio
 
 sudo pip3 install flask
 
