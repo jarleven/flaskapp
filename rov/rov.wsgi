@@ -3,4 +3,4 @@
 import sys
 sys.path.insert(0, '/var/www/html/rov')
 
-from rgbw import app as application
+from rov import app as application
