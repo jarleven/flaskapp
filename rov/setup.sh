@@ -70,8 +70,8 @@ sudo cp apache-rov.conf /etc/apache2/sites-available/
 sudo cp gamepadtest.js /var/www/html/
 sudo cp index.html /var/www/html/
 
-sudo cp rov.py /var/www/html/rov
-sudo cp rov.wsgi /var/www/html/rov
+sudo cp rov.py /var/www/html/rov/
+sudo cp rov.wsgi /var/www/html/rov/
 
 
 sudo chown -R pi:pi /var/www/html
