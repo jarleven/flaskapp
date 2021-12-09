@@ -73,7 +73,7 @@ function sendData(a, b){
         let queryBuilder = `red=${red}&green=${green}&blue=${blue}`;
 
         $.ajax({
-            url: `/html/rgbw/?${queryBuilder}`,
+            url: `/html/rov/?${queryBuilder}`,
             method: 'GET',
             dataType: 'json',
             cache: false,
