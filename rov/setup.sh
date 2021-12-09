@@ -3,7 +3,7 @@
 # To run the script :
 : '
 
-wget https://raw.githubusercontent.com/jarleven/flaskapp/main/setup_gamepad.sh && chmod +x setup_gamepad.sh && ./setup_gamepad.sh
+wget https://github.com/jarleven/flaskapp/blob/main/rov/setup.sh && chmod +x setup.sh && ./setup.sh
 
 '
 
@@ -56,32 +56,27 @@ sudo pip3 install flask
 # TODO: Check what/why
 sudo a2enmod headers
 
+
+https://github.com/jarleven/flaskapp.git
+
+cd ~/flaskapp/rov
+
 sudo rm /var/www/html/index.html
 
-#sudo cp ~/RaspberryPi-RGBW-Control/index.html  /var/www/html/
-#sudo cp ~/RaspberryPi-RGBW-Control/script.js   /var/www/html/
-#sudo cp ~/RaspberryPi-RGBW-Control/style.css   /var/www/html/
-#sudo cp -r ~/RaspberryPi-RGBW-Control/static   /var/www/html/
+mkdir /var/www/html/rov
 
-sudo mkdir /var/www/html/rov
+sudo cp apache-rov.conf /etc/apache2/sites-available/
 
+sudo cp gamepadtest.js /var/www/html/
+sudo cp index.html /var/www/html/
 
+sudo cp rov.py /var/www/html/rov
+sudo cp rov.wsgi /var/www/html/rov
 
-#sudo cp ~/RaspberryPi-RGBW-Control/rgbw.py /var/www/html/rgbw/
-#sudo cp ~/RaspberryPi-RGBW-Control/rgbw.wsgi /var/www/html/rgbw/
-#sudo cp ~/RaspberryPi-RGBW-Control/white.json /var/www/html/rgbw/
-#sudo cp ~/RaspberryPi-RGBW-Control/rgb.json /var/www/html/rgbw/
-
-
-#sudo cp ~/RaspberryPi-RGBW-Control/utils/apache-led.conf  /etc/apache2/sites-available/
 
 sudo chown -R pi:pi /var/www/html
 
-# Install pigpio daemon
-
-
-
-
+# Start the pigpio daemon (Also added to crontab in the end)
 sudo pigpiod
 
 
@@ -107,6 +102,3 @@ sudo systemctl reload apache2
 # @reboot sudo pigpiod
 
 cat <(crontab -l 2>/dev/null) <(echo "@reboot sudo pigpiod") | crontab -
-
-
-
