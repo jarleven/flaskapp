@@ -3,7 +3,7 @@
 # To run the script :
 : '
 
-wget https://github.com/jarleven/flaskapp/blob/main/rov/setup.sh && chmod +x setup.sh && ./setup.sh
+wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rov/setup.sh && chmod +x setup.sh && ./setup.sh
 
 '
 
