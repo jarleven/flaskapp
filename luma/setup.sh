@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ~
+
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y vim git
@@ -26,3 +28,7 @@ sudo -H pip3 install luma.lcd
 
 
 #sudo raspi-config nonint do_spi 1
+
+
+
+git clone https://github.com/rm-hull/luma.examples.git
