@@ -15,9 +15,10 @@ device.text = "Hello world"
 
 try:
     while (True):
-        CurDate = datetime.now().strftime('%m/%d/%y')
-        CurTime = datetime.now().strftime('%H:%M:%S')
 
+        CurDate = datetime.now().strftime('  %d. %b %Y')
+        CurTime = datetime.now().strftime('    %H:%M:%S')
+        # https://strftime.org/
 
         device.text = '\n'.join([CurDate, CurTime])
         time.sleep(1)
