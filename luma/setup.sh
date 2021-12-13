@@ -5,7 +5,7 @@ sudo apt upgrade -y
 sudo apt install -y vim git
 
 sudo usermod -a -G spi,gpio pi
-sudo apt install build-essential python3-dev python3-pip libfreetype6-dev libjpeg-dev libopenjp2-7 libtiff5
+sudo apt install -y build-essential python3-dev python3-pip libfreetype6-dev libjpeg-dev libopenjp2-7 libtiff5
 
 sudo apt install -y python3 python3-pip python3-dev
 
