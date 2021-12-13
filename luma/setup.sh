@@ -1,6 +1,17 @@
 #!/bin/bash
 
+# To run the script :
+: '
+```Bash
+
+rm setup.sh && wget https://raw.githubusercontent.com/jarleven/flaskapp/main/luma/setup.sh && chmod +x setup.sh && ./setup.sh
+
+```
+'
+
 cd ~
+
+sudo timedatectl set-timezone Europe/Oslo
 
 sudo apt update
 sudo apt upgrade -y
@@ -35,6 +46,7 @@ git clone https://github.com/rm-hull/luma.examples.git
 sudo apt install -y i2c-tools
 sudo i2cdetect -y 1
 
+: '
 ```bash
   pi@raspberrypi:~ $ sudo i2cdetect -y 1
      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
@@ -47,3 +59,4 @@ sudo i2cdetect -y 1
 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 70: -- -- -- -- -- -- -- --
 ```
+'
