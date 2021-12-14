@@ -1,6 +1,6 @@
+# Example from : https://luma-oled.readthedocs.io/en/latest/software.html
 import time
 
-#import subprocess
 from datetime import datetime
 
 from luma.core.interface.serial import i2c, spi, pcf8574
