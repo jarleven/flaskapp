@@ -6,6 +6,10 @@
 
 rm setup.sh && wget https://raw.githubusercontent.com/jarleven/flaskapp/main/luma/setup.sh && chmod +x setup.sh && ./setup.sh
 
+sudo raspi-config
+# Interface options Enable I2C
+
+
 ```
 '
 
