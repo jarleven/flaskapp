@@ -1,3 +1,8 @@
+import time
+
+#import subprocess
+from datetime import datetime
+
 from luma.core.interface.serial import i2c, spi, pcf8574
 from luma.core.interface.parallel import bitbang_6800
 from luma.core.render import canvas
@@ -11,6 +16,30 @@ serial = i2c(port=1, address=0x3C)
 # substitute ssd1331(...) or sh1106(...) below if using that device
 device = ssd1306(serial)
 
-with canvas(device) as draw:
-    draw.rectangle(device.bounding_box, outline="white", fill="black")
-    draw.text((30, 40), "Hello World", fill="white")
+
+
+try:
+    while (True):
+
+        CurDate = datetime.now().strftime('  %d. %b %Y')
+        CurTime = datetime.now().strftime('    %H:%M:%S')
+        # https://strftime.org/
+
+
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, outline="white", fill="black")
+            draw.text((30, 40), CurDate, fill="white")
+            draw.text((50, 40), CurTime, fill="white")
+        
+        
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    pass
+
+device.backlight(False)
+device.show()
+
+
+
+
