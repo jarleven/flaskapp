@@ -11,11 +11,21 @@ sudo python3 -m pip install --force-reinstall adafruit-blinka
 #sudo usermod -a -G spi,gpio,i2c pi
 
 
+# ---- Python file ----
+: '
+
 import board
 import neopixel
 pixels = neopixel.NeoPixel(board.D18, 8)
 
-# Pin 12 / D18
+# Header pin # 12 / D18
+
+pixels.fill((0, 255, 0))
+pixels[0] = (255, 0, 0)
+
+'
+# -----------------------
+
 
 : '
 ```
