@@ -3,7 +3,6 @@
 
 import time
 
-#import subprocess
 from datetime import datetime
 
 from luma.core.interface.serial import pcf8574
