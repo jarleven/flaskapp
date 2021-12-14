@@ -32,8 +32,10 @@ sudo apt install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopen
 # The default pip and setuptools bundled with apt on Raspbian are really old, and can cause components to not be installed properly. Make sure they are up to date by upgrading them first:
 sudo -H pip install --upgrade --ignore-installed pip setuptools
 
-sudo -H pip3 install luma.lcd
-
+# luma.lcd  for HD 44780
+# luma.oled for SSD 1306
+sudo -H pip3 install --upgrade luma.lcd
+sudo -H pip3 install --upgrade luma.oled
 
 #sudo raspi-config nonint do_spi 1
 
