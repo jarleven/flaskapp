@@ -21,15 +21,15 @@ device = ssd1306(serial)
 try:
     while (True):
 
-        CurDate = datetime.now().strftime('  %d. %b %Y')
-        CurTime = datetime.now().strftime('    %H:%M:%S')
+        CurDate = datetime.now().strftime('%d. %b %Y')
+        CurTime = datetime.now().strftime('%H:%M:%S')
         # https://strftime.org/
 
 
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, outline="white", fill="black")
-            draw.text((30, 40), CurDate, fill="white")
-            draw.text((50, 40), CurTime, fill="white")
+            draw.text((27, 15), CurDate, fill="white")
+            draw.text((42, 35), CurTime, fill="white")
         
         
         time.sleep(1)
