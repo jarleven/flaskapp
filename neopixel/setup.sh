@@ -17,7 +17,7 @@ pixels = neopixel.NeoPixel(board.D18, 8)
 
 # Pin 12 / D18
 
-
+: '
 ```
 
         3V3  (1) (2)  5V
@@ -42,7 +42,7 @@ pixels = neopixel.NeoPixel(board.D18, 8)
         GND (39) (40) GPIO21
 
 ```
-
+'
 
 
 
