@@ -43,6 +43,8 @@ sudo -H pip3 install --upgrade luma.oled
 
 sudo -H pip3 install --upgrade luma.led_matrix
 #sudo python3 -m pip install --upgrade luma.led_matrix
+sudo python3 -m pip install --upgrade --force-reinstall luma.led_matrix
+
 
 #git clone https://github.com/rm-hull/luma.led_matrix.git
 # git clone !
