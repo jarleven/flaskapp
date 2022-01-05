@@ -9,7 +9,7 @@ sudo apt install -y build-essential libfreetype6-dev libjpeg-dev libopenjp2-7 li
 sudo apt install -y python3 python3-pip python3-dev
 
 
-sudo raspi-config nonint do_spi 1
+sudo raspi-config nonint do_spi 0
 sudo usermod -a -G spi,gpio pi
 
 
