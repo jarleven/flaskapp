@@ -9,11 +9,11 @@ sudo apt install -y build-essential libfreetype6-dev libjpeg-dev libopenjp2-7 li
 sudo apt install -y python3 python3-pip python3-dev
 
 
-#sudo raspi-config nonint do_spi 1
+sudo raspi-config nonint do_spi 1
 sudo usermod -a -G spi,gpio pi
 
 
-#lsmod | grep -i spi
+
 
 sudo -H pip install --upgrade --ignore-installed pip setuptools
 	
@@ -30,6 +30,7 @@ sudo -H pip install --upgrade --ignore-installed Pillow		# Mirrored matrix
 
 git clone https://github.com/rm-hull/luma.led_matrix.git
 
+lsmod | grep -i spi
 
 echo ""
 echo ""
