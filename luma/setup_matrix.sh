@@ -30,7 +30,7 @@ sudo -H pip install --upgrade --ignore-installed Pillow		# Mirrored matrix
 ```Bash
 
 			   3V3  (1) (2)  5V			2 VCC
-			 GPIO2  (3) (4)  5V			  VCC
+			 GPIO2  (3) (4)  5V			  
 			 GPIO3  (5) (6)  GND			6 GND
 			 GPIO4  (7) (8)  GPIO14
 	GND		   GND  (9) (10) GPIO15
@@ -38,9 +38,9 @@ sudo -H pip install --upgrade --ignore-installed Pillow		# Mirrored matrix
 			GPIO27 (13) (14) GND
 			GPIO22 (15) (16) GPIO23
 			   3V3 (17) (18) GPIO24
-Grå	DIN 19		GPIO10 (19) (20) GND
+   	DIN 19		GPIO10 (19) (20) GND
 			 GPIO9 (21) (22) GPIO25
-Lilla	CLK 23		GPIO11 (23) (24) GPIO8			24 Enable/CS kvit
+     	CLK 23		GPIO11 (23) (24) GPIO8			24 Enable/CS
 			   GND (25) (26) GPIO7
 			 GPIO0 (27) (28) GPIO1
 			 GPIO5 (29) (30) GND
