@@ -1,10 +1,10 @@
 
 
-# What need to be done to make a ultra low latency IP camera stream ?
+### What need to be done to make a ultra low latency IP camera stream ?
 
-https://www.raspberrypi.com/documentation/accessories/camera.html
-http://imrid.net/?p=4396
-https://www.tomshardware.com/how-to/use-raspberry-pi-camera-with-bullseye
+* https://www.raspberrypi.com/documentation/accessories/camera.html
+* http://imrid.net/?p=4396
+* https://www.tomshardware.com/how-to/use-raspberry-pi-camera-with-bullseye
 
 
  ```bash
