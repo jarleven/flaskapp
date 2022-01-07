@@ -5,6 +5,7 @@
 * https://www.raspberrypi.com/documentation/accessories/camera.html
 * http://imrid.net/?p=4396
 * https://www.tomshardware.com/how-to/use-raspberry-pi-camera-with-bullseye
+* https://www.bensoftware.com/forum/discussion/3254/raspberry-pi-h264-rtsp-low-latency-camera-instructions
 
 
  ```bash
