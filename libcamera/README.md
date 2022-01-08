@@ -6,6 +6,7 @@
 * http://imrid.net/?p=4396
 * https://www.tomshardware.com/how-to/use-raspberry-pi-camera-with-bullseye
 * https://www.bensoftware.com/forum/discussion/3254/raspberry-pi-h264-rtsp-low-latency-camera-instructions
+* https://stackoverflow.com/questions/62789865/ffmpeg-zero-latency-webcam-streaming
 
 
 
@@ -28,5 +29,25 @@ ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flag
  
  ffplay tcp://192.168.1.166 -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
 
-  ```
+```
 
+```
+
+Example: libcamera-hello --vflip --hflip
+
+
+	--hflip				Read out with horizontal mirror
+	--vflip				Read out with vertical flip
+```
+
+
+
+```
+-vf "setpts=N/30"
+-fflags nobuffer
+-flags low_delay
+-framedrop : Drop video frames if video is out of sync.
+```
+
+
+```
