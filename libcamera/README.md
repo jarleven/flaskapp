@@ -8,6 +8,12 @@
 * https://www.bensoftware.com/forum/discussion/3254/raspberry-pi-h264-rtsp-low-latency-camera-instructions
 
 
+
+* https://www.thingiverse.com/thing:2931401
+* https://www.arducam.com/wp-content/uploads/2020/02/pi-4-to-cam-connection-1024x368.png
+* 
+
+
  ```bash
 
 libcamera-vid -t 0 --inline --listen -o tcp://0.0.0.0:<port>
