@@ -77,6 +77,7 @@ lsmod | grep -i spi
 echo ""
 echo ""
 echo ""
+echo "source led_matrix_env/bin/activate"
 echo "cd luma.led_matrix/"
 echo "python3 examples/matrix_demo.py"
 
