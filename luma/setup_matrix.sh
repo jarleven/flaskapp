@@ -44,7 +44,7 @@ python3 examples/matrix_demo.py
 			 GPIO2  (3) (4)  5V			  
 			 GPIO3  (5) (6)  GND			6 GND
 			 GPIO4  (7) (8)  GPIO14
-	GND		   GND  (9) (10) GPIO15
+			   GND  (9) (10) GPIO15
 			GPIO17 (11) (12) GPIO18
 			GPIO27 (13) (14) GND
 			GPIO22 (15) (16) GPIO23
