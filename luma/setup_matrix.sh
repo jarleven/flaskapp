@@ -33,15 +33,6 @@ pip install -vvv -e . --no-cache-dir
 python3 examples/matrix_demo.py
 
 
-#sudo -H pip install --upgrade --ignore-installed pip setuptools
-
-#sudo python3 -m pip install --upgrade luma.core
-
-#sudo python3 -m pip install --upgrade luma.led_matrix
-#sudo python3 -m pip install --upgrade --force-reinstall luma.led_matrix
-
-#sudo -H pip install --upgrade --ignore-installed Pillow		# Mirrored matrix
-
 
 : '
 ```Bash
