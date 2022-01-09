@@ -14,6 +14,7 @@ sudo apt install -y python3-venv
 sudo raspi-config nonint do_spi 0
 sudo usermod -a -G spi,gpio pi
 
+export CFLAGS=-fcommon
 git clone https://github.com/rm-hull/luma.led_matrix.git
 sed -i '/rpi_ws281x/d' luma.led_matrix/setup.cfg
 
