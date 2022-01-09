@@ -21,8 +21,6 @@ sudo usermod -a -G spi,gpio pi
 
 export CFLAGS=-fcommon
 git clone https://github.com/rm-hull/luma.led_matrix.git
-sed -i '/rpi_ws281x/d' luma.led_matrix/setup.cfg
-
 
 python3 -m venv led_matrix_env
 source led_matrix_env/bin/activate
