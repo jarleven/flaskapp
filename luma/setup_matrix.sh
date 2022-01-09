@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ~
+
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y vim git
@@ -7,23 +9,32 @@ sudo apt install -y vim git
 
 sudo apt install -y build-essential libfreetype6-dev libjpeg-dev libopenjp2-7 libtiff5
 sudo apt install -y python3 python3-pip python3-dev
-
+sudo apt install -y python3-venv
 
 sudo raspi-config nonint do_spi 0
 sudo usermod -a -G spi,gpio pi
 
+git clone https://github.com/rm-hull/luma.led_matrix.git
+sed -i '/rpi_ws281x/d' luma.led_matrix/setup.cfg
 
 
+python3 -m venv led_matrix_env
+source led_matrix_env/bin/activate
 
-sudo -H pip install --upgrade --ignore-installed pip setuptools
-	
+cd luma.led_matrix/
+pip install -vvv -e .
+
+python3 examples/matrix_demo.py
+
+
+#sudo -H pip install --upgrade --ignore-installed pip setuptools
 
 #sudo python3 -m pip install --upgrade luma.core
 
-sudo python3 -m pip install --upgrade luma.led_matrix
-sudo python3 -m pip install --upgrade --force-reinstall luma.led_matrix
+#sudo python3 -m pip install --upgrade luma.led_matrix
+#sudo python3 -m pip install --upgrade --force-reinstall luma.led_matrix
 
-sudo -H pip install --upgrade --ignore-installed Pillow		# Mirrored matrix
+#sudo -H pip install --upgrade --ignore-installed Pillow		# Mirrored matrix
 
 
 : '
@@ -54,7 +65,6 @@ sudo -H pip install --upgrade --ignore-installed Pillow		# Mirrored matrix
 '
 
 
-git clone https://github.com/rm-hull/luma.led_matrix.git
 
 lsmod | grep -i spi
 
