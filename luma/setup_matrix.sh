@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+: '
+wget https://raw.githubusercontent.com/jarleven/flaskapp/main/luma/setup_matrix.sh && chmod +x setup_matrix.sh && ./setup_matrix.sh
+'
+
 cd ~
 
 sudo apt update
