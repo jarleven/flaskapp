@@ -28,7 +28,7 @@ python3 -m venv led_matrix_env
 source led_matrix_env/bin/activate
 
 cd luma.led_matrix/
-pip install -vvv -e .
+pip install -vvv -e . --no-cache-dir
 
 python3 examples/matrix_demo.py
 
