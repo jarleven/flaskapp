@@ -32,24 +32,27 @@ wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rov/setup.sh && ch
 sudo apt update
 sudp apt upgrade -y
 
-sudo apt remove -y python2
-sudo apt remove -y python-is-python2
-sudo apt autoremove -y --purge
-sudo apt update
+#sudo apt remove -y python2
+#sudo apt remove -y python-is-python2
+#sudo apt autoremove -y --purge
+#sudo apt update
 
-sudo apt install -y git
-sudo apt install -y vim
+sudo apt install -y git vim
 
-sudo apt install -y python3
-sudo apt install -y python3-pip
+sudo apt install -y python3 python3-pip
+
 sudo apt install -y apache2
 sudo apt install -y libapache2-mod-wsgi-py3
 
-sudo apt-get install -y python-is-python3
+#sudo apt-get install -y python-is-python3
 
 
 sudo apt install -y pigpio
 sudo apt install -y python3-pigpio
+
+# Auto-/start the pigpio daemon
+sudo systemctl enable pigpiod
+sudo systemctl start pigpiod 
 
 sudo pip3 install flask
 
@@ -77,8 +80,7 @@ sudo cp rov.wsgi /var/www/html/rov/
 sudo chown -R pi:pi /var/www/html
 
 # Start the pigpio daemon (Also added to crontab in the end)
-sudo pigpiod
-
+#sudo pigpiod
 
 #sudo a2dissite apache-rov.conf
 sudo a2dissite 000-default.conf
@@ -95,10 +97,14 @@ sudo systemctl reload apache2
 
 
 
+
+
+
+
 # In case the crontab does not exist we need to catch and handle some errors
 # For testing, delete the cronab for user pi with :
 #  crontab -r -u pi
 # In the crontab add
 # @reboot sudo pigpiod
 
-cat <(crontab -l 2>/dev/null) <(echo "@reboot sudo pigpiod") | crontab -
+#cat <(crontab -l 2>/dev/null) <(echo "@reboot sudo pigpiod") | crontab -
