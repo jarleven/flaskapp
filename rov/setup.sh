@@ -46,6 +46,7 @@ sudo apt install -y libapache2-mod-wsgi-py3
 
 #sudo apt-get install -y python-is-python3
 
+# TODO investigate a bit regarding the pigpio https://abyz.me.uk/rpi/pigpio/download.html
 
 sudo apt install -y pigpio
 sudo apt install -y python3-pigpio
