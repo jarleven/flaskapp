@@ -7,9 +7,6 @@ wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rov/setup.sh && ch
 ```
 
 ```
-   GPIOxx used
-   pi.set_PWM_dutycycle(24, redR)
-   pi.set_PWM_dutycycle(25, greenR)
 
    pi.set_PWM_dutycycle(20, redL)
    pi.set_PWM_dutycycle(18, greenL)
