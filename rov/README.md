@@ -45,3 +45,8 @@ wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rov/setup.sh && ch
 
 ```
 
+```
+Investigate HW PWM on the Raspberry Pi
+   http://abyz.me.uk/rpi/pigpio/python.html#hardware_PWM
+
+```
