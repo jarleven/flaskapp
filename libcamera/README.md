@@ -27,7 +27,7 @@ ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flag
   
  libcamera-vid -t 0 --inline --listen --width 640 --height 480 --codec mjpeg -n -o tcp://0.0.0.0:8888
  
- ffplay tcp://192.168.1.166 -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
+ ffplay tcp://192.168.1.166:8888 -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
  
  VLC tcp/mjpeg://192.168.1.166:8888
 
