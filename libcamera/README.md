@@ -24,6 +24,9 @@ ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flag
  ```
  
  ```bash
+
+sudo raspi-config nonint do_camera 0
+
   
  libcamera-vid -t 0 --inline --listen --width 640 --height 480 --codec mjpeg -n -o tcp://0.0.0.0:8888
  
