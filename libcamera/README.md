@@ -24,7 +24,17 @@ libcamera-vid -t 0 --inline --listen -o tcp://0.0.0.0:<port>
 
 ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
 
- ```
+
+	--hflip				Read out with horizontal mirror
+	--vflip				Read out with vertical flip
+
+	-vf "setpts=N/30"
+	-fflags nobuffer
+	-flags low_delay
+	-framedrop : Drop video frames if video is out of sync.
+
+
+```
  
  ```bash
 
@@ -39,23 +49,3 @@ sudo raspi-config nonint do_camera 0
 
 ```
 
-```
-
-Example: libcamera-hello --vflip --hflip
-
-
-	--hflip				Read out with horizontal mirror
-	--vflip				Read out with vertical flip
-```
-
-
-
-```
--vf "setpts=N/30"
--fflags nobuffer
--flags low_delay
--framedrop : Drop video frames if video is out of sync.
-```
-
-
-```
