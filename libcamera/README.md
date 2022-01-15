@@ -45,7 +45,7 @@ sudo raspi-config nonint do_camera 0
  
  ffplay tcp://192.168.1.166:8888 -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
  
- VLC tcp/mjpeg://192.168.1.166:8888
+vlc tcp/mjpeg://192.168.1.166:8888
 
 ```
 
