@@ -31,7 +31,7 @@ ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flag
 	-vf "setpts=N/30"
 	-fflags nobuffer
 	-flags low_delay
-	-framedrop			Drop video frames if video is out of sync.
+	-framedrop				Drop video frames if video is out of sync.
 
 
 ```
