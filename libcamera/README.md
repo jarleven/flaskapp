@@ -18,7 +18,7 @@
 
 ### Working and tried stuff
 
- ```bash
+ ```
 
 libcamera-vid -t 0 --inline --listen -o tcp://0.0.0.0:<port>
 
@@ -31,7 +31,7 @@ ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flag
 	-vf "setpts=N/30"
 	-fflags nobuffer
 	-flags low_delay
-	-framedrop : Drop video frames if video is out of sync.
+	-framedrop			Drop video frames if video is out of sync.
 
 
 ```
