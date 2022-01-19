@@ -70,8 +70,10 @@ echo "source led_matrix_env/bin/activate"
 echo "cd luma.led_matrix/"
 echo "python3 examples/matrix_demo.py"
 
-
-
+echo ""
+echo "https://luma-led-matrix.readthedocs.io/_/downloads/en/stable/pdf/"
+echo "Note: The ws2812 driver uses the ws2812 PyPi package to interface to the daisychained LEDs. It uses DMA (direct"
+echo "memory access) via /dev/mem which means that it has to run in privileged mode (via sudo root access)."
 
 
 
