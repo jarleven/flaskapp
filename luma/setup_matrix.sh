@@ -5,6 +5,14 @@
 wget https://raw.githubusercontent.com/jarleven/flaskapp/main/luma/setup_matrix.sh && chmod +x setup_matrix.sh && ./setup_matrix.sh
 '
 
+: '
+For SPI speed change and a 5x2 matrix layout
+   serial = spi(port=0, device=0, gpio=noop(), bus_speed_hz=1000000)
+    device = max7219(serial, width=40, height=16, block_orientation=block_orientation, rotate=rotate or 0, blocks_arranged_in_reverse_order=inreverse)
+'
+
+
+
 cd ~
 
 sudo apt update
