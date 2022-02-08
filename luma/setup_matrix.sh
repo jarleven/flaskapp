@@ -48,7 +48,7 @@ python3 examples/matrix_demo.py
 			 GPIO3  (5) (6)  GND			6 GND
 			 GPIO4  (7) (8)  GPIO14
 			   GND  (9) (10) GPIO15
-			GPIO17 (11) (12) GPIO18
+			GPIO17 (11) (12) GPIO18			(12 Neopixel DI)
 			GPIO27 (13) (14) GND
 			GPIO22 (15) (16) GPIO23
 			   3V3 (17) (18) GPIO24
@@ -82,6 +82,11 @@ echo ""
 echo "https://luma-led-matrix.readthedocs.io/_/downloads/en/stable/pdf/"
 echo "Note: The ws2812 driver uses the ws2812 PyPi package to interface to the daisychained LEDs. It uses DMA (direct"
 echo "memory access) via /dev/mem which means that it has to run in privileged mode (via sudo root access)."
+
+
+#(led_matrix_env) pi@raspberrypi:~ $ sudo python3 examples/neopixel_demo.py 
+#python3: can't open file '/home/pi/examples/neopixel_demo.py': [Errno 2] No such file or directory
+#(led_matrix_env) pi@raspberrypi:~ $ cd luma.led_matrix/
 
 
 
