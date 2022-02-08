@@ -51,6 +51,9 @@ pixels[0] = (255, 0, 0)
      GPIO26 (37) (38) GPIO20
         GND (39) (40) GPIO21
 
+
+Typically, WS2812 NeoPixels reqire VCC, VSS (GND) and DI pins connecting to the Raspberry Pi, where the DI pin is usually connected to a PWM control pin such as GPIO 18.
+
 ```
 '
 
