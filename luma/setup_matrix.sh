@@ -87,6 +87,10 @@ echo "memory access) via /dev/mem which means that it has to run in privileged m
 #(led_matrix_env) pi@raspberrypi:~ $ sudo python3 examples/neopixel_demo.py 
 #python3: can't open file '/home/pi/examples/neopixel_demo.py': [Errno 2] No such file or directory
 #(led_matrix_env) pi@raspberrypi:~ $ cd luma.led_matrix/
+#
+#(led_matrix_env) pi@raspberrypi:~/luma.led_matrix $ pip3 install --upgrade --force-reinstall -vvv -e . --no-cache-dir
+
+#
 
 
 
