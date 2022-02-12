@@ -28,7 +28,14 @@ cd luma.led_matrix/
 
 sudo python3 examples/neopixel_demo.py
 
-
+#
+# In the examples/matrix_demo.py include the ws2812 and setup the device as a ws2812 for scrolling text examples
+#
+# from luma.led_matrix.device import ws2812, UNICORN_HAT
+# device = ws2812(width=8, height=8, mapping=UNICORN_HAT)
+#
+# In show message use fill="green" for green text
+#
 
 : '
 ```Bash
