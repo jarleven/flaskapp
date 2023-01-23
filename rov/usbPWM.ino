@@ -2,6 +2,8 @@
 
 //https://forum.arduino.cc/t/read-line-from-serial/98251/5
 //https://stackoverflow.com/questions/11068450/arduino-c-language-parsing-string-with-delimiter-input-through-serial-interfa
+//https://www.electronicwings.com/users/sanketmallawat91/projects/215/frequency-changing-of-pwm-pins-of-arduino-uno#:~:text=The%20frequency%20of%20the%20PWM%20signal%20on%20most%20pins%20is,also%20run%20at%20980%20Hz.
+
 
 char buffer [32];
 int cnt = 0;
