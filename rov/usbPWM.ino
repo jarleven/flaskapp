@@ -43,7 +43,7 @@ void runMotor(int motorA, int motorB)
     digitalWrite(MA_A, LOW);
     digitalWrite(MA_B, LOW);
   }
-    analogWrite(MA_PWM,max(abs(motorA), 1023));
+    analogWrite(MA_PWM,min(abs(motorA), 1023));
 
   if (motorB > 0){
     Serial.println("Forward B");
@@ -56,7 +56,7 @@ void runMotor(int motorA, int motorB)
      digitalWrite(MB_B, HIGH);
   }
 
-  analogWrite(MB_PWM,max(abs(motorB),1023));
+  analogWrite(MB_PWM,min(abs(motorB),1023));
   if(motorB==0) {
     Serial.println("STOP B");
     digitalWrite(MB_A, LOW);
