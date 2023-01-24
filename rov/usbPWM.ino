@@ -7,6 +7,15 @@
 #define MB_A 7
 #define MB_B 8
 
+
+//#define __DEBUG__
+
+#ifdef __DEBUG__
+#define DEBUG(...) printf(__VA_ARGS__)
+#else
+#define DEBUG(...)
+#endif
+
 char buffer [32];
 int cnt = 0;
 
