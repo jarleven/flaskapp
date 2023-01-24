@@ -1,3 +1,7 @@
+/**
+ * To run in flask see :
+ * https://github.com/RedFalsh/flask-serial/blob/master/README.md
+ */
 
 #define MA_PWM 5
 #define MA_A 3
