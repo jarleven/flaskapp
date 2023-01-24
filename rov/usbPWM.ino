@@ -1,6 +1,8 @@
 /**
  * To run in flask see :
  * https://github.com/RedFalsh/flask-serial/blob/master/README.md
+ *
+ * https://stackoverflow.com/questions/57558398/importing-python-script-that-contain-serial-initialization-into-flask-app
  */
 
 #define MA_PWM 5
