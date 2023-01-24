@@ -8,13 +8,19 @@
 #define MB_B 8
 
 
-//#define __DEBUG__
+// Debugging switches and macros
+#define DEBUG 0 // Switch debug output on and off by 1 or 0
 
-#ifdef __DEBUG__
-#define DEBUG(...) printf(__VA_ARGS__)
+#if DEBUG
+#define PRINTS(s)   { Serial.print(F(s)); }
+#define PRINT(s,v)  { Serial.print(F(s)); Serial.print(v); }
+#define PRINTX(s,v) { Serial.print(F(s)); Serial.print(F("0x")); Serial.print(v, HEX); }
 #else
-#define DEBUG(...)
+#define PRINTS(s)
+#define PRINT(s,v)
+#define PRINTX(s,v)
 #endif
+
 
 char buffer [32];
 int cnt = 0;
@@ -31,43 +37,37 @@ Arduino Pins 9, 10, 11, and 3: 500Hz
 */
 void runMotor(int motorA, int motorB)
 {
-  Serial.println(motorA);
-  Serial.println(motorB);
-  
+  PRINT("\nMotor A : ", motorA);
+  PRINT("\nMotor B : ", motorB);
   
  
   if (motorA > 0){
-    Serial.println("Forward A");
      digitalWrite(MA_A, HIGH);
      digitalWrite(MA_B, LOW);
   }
   else{
-    Serial.println("Reverse A");
     digitalWrite(MA_A, LOW);
     digitalWrite(MA_B, HIGH);
   }
-  
+
+analogWrite(MA_PWM,min(abs(motorA), 1023));
   if(motorA==0) {
-    Serial.println("STOP A");
     digitalWrite(MA_A, LOW);
     digitalWrite(MA_B, LOW);
   }
-    analogWrite(MA_PWM,min(abs(motorA), 1023));
 
-  if (motorB > 0){
-    Serial.println("Forward B");
+
+if (motorB > 0){
      digitalWrite(MB_A, HIGH);
      digitalWrite(MB_B, LOW);
   }
   else{
-    Serial.println("Reverse B");
      digitalWrite(MB_A, LOW);
      digitalWrite(MB_B, HIGH);
   }
 
   analogWrite(MB_PWM,min(abs(motorB),1023));
   if(motorB==0) {
-    Serial.println("STOP B");
     digitalWrite(MB_A, LOW);
     digitalWrite(MB_B, LOW);
   }
@@ -76,34 +76,31 @@ void runMotor(int motorA, int motorB)
 
 
 void printError(void) {
-  Serial.print("Oooops  : ");
-  Serial.print(buffer);
+  PRINT("\nOooops : ", buffer);
   runMotor(0, 0);
-
   errorMsg=false;
 }
 
 void setup() {
-  // put your setup code here, to run once:
+
   pinMode(LED_BUILTIN, OUTPUT);
      
-  pinMode(MA_A, OUTPUT);
-  pinMode(MA_B, OUTPUT);
+  pinMode(MA_A,   OUTPUT);
+  pinMode(MA_B,   OUTPUT);
   pinMode(MA_PWM, OUTPUT); // PWM
   pinMode(MB_PWM, OUTPUT); // PWM
-  pinMode(MB_A, OUTPUT);
-  pinMode(MB_B, OUTPUT);
+  pinMode(MB_A,   OUTPUT);
+  pinMode(MB_B,   OUTPUT);
 
 
   Serial.begin(115200);
   Serial.println("EidVgs serial motor controller v0.1");
   digitalWrite(LED_BUILTIN, HIGH);
-
 }
 
 void loop() {
  
-	  if (Serial.available() > 0) {
+  if (Serial.available() > 0) {
       char c = Serial.read();  //gets one byte from serial buffer
       buffer[cnt++] = c;
 
@@ -115,32 +112,27 @@ void loop() {
       }
     }     
 		
-	  if(ready) {
-      // Contains 3 substrings separated by comma  motorA, motorB, endOfLineCheck
+  if(ready) {
+    int motorA, motorB;
+    char endOfLine;
 
-      int motorA, motorB;
-      char endOfLine;
+    if(sscanf(buffer, "%d,%d,%c", &motorA, &motorB, &endOfLine) == 3){
 
-      if(sscanf(buffer, "%d,%d,%c", &motorA, &motorB, &endOfLine) == 3){
-
-        if(endOfLine=='s')
-          runMotor(motorA, motorB);
-        else
-          errorMsg=true;
-      }
+      if(endOfLine=='s')
+        runMotor(motorA, motorB);
       else
         errorMsg=true;
-
-
-
-    
-      // Cleanup and get ready for new input string
-      ready=false;  
     }
+    else
+      errorMsg=true;
+
+    // Cleanup and get ready for new input string
+    ready=false;  
+  }
 
   if(errorMsg) {
     printError();
-    //Sticky error message
+    //Sticky error LED, will never trun on again
     digitalWrite(LED_BUILTIN, LOW);
   }
         
@@ -150,3 +142,4 @@ void loop() {
 //https://forum.arduino.cc/t/read-line-from-serial/98251/5
 //https://stackoverflow.com/questions/11068450/arduino-c-language-parsing-string-with-delimiter-input-through-serial-interfa
 //https://www.electronicwings.com/users/sanketmallawat91/projects/215/frequency-changing-of-pwm-pins-of-arduino-uno#:~:text=The%20frequency%20of%20the%20PWM%20signal%20on%20most%20pins%20is,also%20run%20at%20980%20Hz.
+//https://arduinoplusplus.wordpress.com/2017/05/01/simple-debugging-for-arduino-sketches/
