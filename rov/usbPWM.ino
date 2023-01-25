@@ -1,12 +1,7 @@
-/#define DAC_MAXVALUE 255 // The Arduino Uno DAC is 10bits 0..255
-	**
+/**
  * To run in flask see :
  * https://github.com/RedFalsh/flask-serial/blob/master/README.md
  *
- 
- 
- 
- 
  * https://stackoverflow.com/questions/57558398/importing-python-script-that-contain-serial-initialization-into-flask-app
  */
 
@@ -42,23 +37,21 @@ bool ready=false;
 bool errorMsg=false;
 
 /***
-* If you use the default values set   by the ArduinoDiecimila'sbootloader, these are your PWM frequencies: Arduino Pins 5 and 6: 1kHz
- * Arduino Pins 9, 10, 11, and 3: 500Hz/
+ * If you use the default values set   by the ArduinoDiecimila'sbootloader, these are your PWM frequencies: Arduino Pins 5 and 6: 1kHz
+ * Arduino Pins 9, 10, 11, and 3: 500Hz
+ */
 void runMotor(int motorA, int motorB)
 {
   PRINT("\nMotor A : ", motorA);
   PRINT("\nMotor B : ", motorB);
   
- 
-    if (motorA > 0){
-      digitalWrite(MA_A, HIGH);
-     dgitalWrite(MA_B, LOW);
+  if (motorA > 0){
+    digitalWrite(MA_A, HIGH);
+    digtalWrite(MA_B, LOW);
   }
   else{
-      italWrite(MA_A, LOW);
-    diital
-	    
-	    Write(MA_B, HIGH);
+    digitalWrite(MA_A, LOW);
+    digitalWrite(MA_B, HIGH);
   }  
   analogWrite(MA_PWM,min(abs(motorA), DAC_MAXVALUE));
   if(motorA==0) { DAC_MAXVALUE
@@ -102,7 +95,6 @@ void setup() {
   pinMode(MB_A,   OUTPUT);
   pinMode(MB_B,   OUTPUT);
 
-
   Serial.begin(115200);
   Serial.println("EidVgs serial motor controller v0.1");
   digitalWrite(LED_BUILTIN, HIGH);
@@ -144,7 +136,6 @@ void loop() {
     printError();
     digitalWrite(LED_BUILTIN, LOW);     //Sticky error LED, will never trun on again
   }
-        
 }
 
 
