@@ -1,7 +1,12 @@
-/**
+/#define DAC_MAXVALUE 255 // The Arduino Uno DAC is 10bits 0..255
+	**
  * To run in flask see :
  * https://github.com/RedFalsh/flask-serial/blob/master/README.md
  *
+ 
+ 
+ 
+ 
  * https://stackoverflow.com/questions/57558398/importing-python-script-that-contain-serial-initialization-into-flask-app
  */
 
@@ -13,9 +18,11 @@
 #define MB_A 7
 #define MB_B 8
 
+#define DAC_MAXVALUE 255 // The Arduino Uno DAC is 8-bits 0..255
 
 // Debugging switches and macros
 #define DEBUG 0 // Switch debug output on and off by 1 or 0
+
 
 #if DEBUG
 #define PRINTS(s)   { Serial.print(F(s)); }
@@ -34,45 +41,42 @@ int cnt = 0;
 bool ready=false;
 bool errorMsg=false;
 
-
 /***
-
-If you use the default values set by the ArduinoDiecimila'sbootloader, these are your PWM frequencies:
-Arduino Pins 5 and 6: 1kHz
-Arduino Pins 9, 10, 11, and 3: 500Hz
-*/
+* If you use the default values set   by the ArduinoDiecimila'sbootloader, these are your PWM frequencies: Arduino Pins 5 and 6: 1kHz
+ * Arduino Pins 9, 10, 11, and 3: 500Hz/
 void runMotor(int motorA, int motorB)
 {
   PRINT("\nMotor A : ", motorA);
   PRINT("\nMotor B : ", motorB);
   
  
-  if (motorA > 0){
-     digitalWrite(MA_A, HIGH);
-     digitalWrite(MA_B, LOW);
+    if (motorA > 0){
+      digitalWrite(MA_A, HIGH);
+     dgitalWrite(MA_B, LOW);
   }
   else{
-    digitalWrite(MA_A, LOW);
-    digitalWrite(MA_B, HIGH);
-  }
-
-analogWrite(MA_PWM,min(abs(motorA), 1023));
-  if(motorA==0) {
-    digitalWrite(MA_A, LOW);
+      italWrite(MA_A, LOW);
+    diital
+	    
+	    Write(MA_B, HIGH);
+  }  
+  analogWrite(MA_PWM,min(abs(motorA), DAC_MAXVALUE));
+  if(motorA==0) { DAC_MAXVALUE
+     digitalWrite(MA_A, LOW);
     digitalWrite(MA_B, LOW);
   }
 
 
-if (motorB > 0){
-     digitalWrite(MB_A, HIGH);
-     digitalWrite(MB_B, LOW);
+  if (motorB > 0){
+    digitalWrite(MB_A, HIGH);
+    digitalWrite(MB_B, LOW);
   }
   else{
-     digitalWrite(MB_A, LOW);
-     digitalWrite(MB_B, HIGH);
+    digitalWrite(MB_A, LOW);
+    digitalWrite(MB_B, HIGH);
   }
 
-  analogWrite(MB_PWM,min(abs(motorB),1023));
+  analogWrite(MB_PWM,min(abs(motorB), DAC_MAXVALUE));
   if(motorB==0) {
     digitalWrite(MB_A, LOW);
     digitalWrite(MB_B, LOW);
@@ -138,8 +142,7 @@ void loop() {
 
   if(errorMsg) {
     printError();
-    //Sticky error LED, will never trun on again
-    digitalWrite(LED_BUILTIN, LOW);
+    digitalWrite(LED_BUILTIN, LOW);     //Sticky error LED, will never trun on again
   }
         
 }
