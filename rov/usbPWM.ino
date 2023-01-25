@@ -47,15 +47,15 @@ void runMotor(int motorA, int motorB)
   
   if (motorA > 0){
     digitalWrite(MA_A, HIGH);
-    digtalWrite(MA_B, LOW);
+    digitalWrite(MA_B, LOW);
   }
   else{
     digitalWrite(MA_A, LOW);
     digitalWrite(MA_B, HIGH);
   }  
   analogWrite(MA_PWM,min(abs(motorA), DAC_MAXVALUE));
-  if(motorA==0) { DAC_MAXVALUE
-     digitalWrite(MA_A, LOW);
+  if(motorA==0) {
+    digitalWrite(MA_A, LOW);
     digitalWrite(MA_B, LOW);
   }
 
