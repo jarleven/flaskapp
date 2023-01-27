@@ -44,6 +44,7 @@ sudo raspi-config nonint do_camera 0
 pi@raspberrypi:~ $ libcamera-hello --qt-preview
 enabled i2c and spi in raspi-config
 apt update and apt upgrade
+pi@raspberrypi:~ $ libcamera-vid -t 0 --inline --listen --width 640 --height 480 --awb tungsten --rotation 180 --codec mjpeg -n -o tcp://0.0.0.0:8888
 
   
  libcamera-vid -t 0 --inline --listen --width 640 --height 480 --codec mjpeg -n -o tcp://0.0.0.0:8888
