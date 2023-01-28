@@ -7,7 +7,7 @@
 ```bash
 
 sudo apt update && apt upgrade -y
-reboot
+sudo reboot
 libcamera-hello
 
 # Streaming server (A few examples)  
