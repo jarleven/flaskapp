@@ -1,0 +1,12 @@
+pi@raspberrypi:~ $ libcamera-hello
+Preview window unavailable
+[0:04:31.283493108] [1326]  INFO Camera camera_manager.cpp:299 libcamera v0.0.3+40-9b860a66
+[0:04:31.331855861] [1327]  WARN RPI raspberrypi.cpp:1308 Mismatch between Unicam and CamHelper for embedded data usage!
+[0:04:31.333226071] [1327]  INFO RPI raspberrypi.cpp:1425 Registered camera /base/soc/i2c0mux/i2c@1/imx219@10 to Unicam device /dev/media3 and ISP device /dev/media0
+[0:04:31.334230253] [1326]  INFO Camera camera.cpp:1028 configuring streams: (0) 1640x1232-YUV420
+[0:04:31.334842262] [1327]  INFO RPI raspberrypi.cpp:805 Sensor: /base/soc/i2c0mux/i2c@1/imx219@10 - Selected sensor format: 1640x1232-SBGGR10_1X10 - Selected unicam format: 1640x1232-pBAA
+#0 (0.00 fps) exp 33251.00 ag 8.00 dg 1.00
+#1 (30.00 fps) exp 33251.00 ag 8.00 dg 1.00
+#2 (30.01 fps) exp 33251.00 ag 8.00 dg 1.00
+#3 (30.01 fps) exp 33251.00 ag 8.00 dg 1.00
+#4 (30.01 fps) exp 33251.00 ag 8.00 dg 1.00
