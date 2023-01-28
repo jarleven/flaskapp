@@ -10,12 +10,8 @@ sudo apt update && apt upgrade -y
 reboot
 libcamera-hello
 
-# Streaming server  
+# Streaming server (A few examples)  
 libcamera-vid -t 0 --inline --listen --width 640 --height 480 --codec mjpeg -n -o tcp://0.0.0.0:8888
-
-sudo apt update && apt upgrade -y
-
- 
 libcamera-vid -t 0 --inline --listen --width 640 --height 480 --awb tungsten --rotation 180 --codec mjpeg -n -o tcp://0.0.0.0:8888
 
 # Playback on ffplay
@@ -36,7 +32,7 @@ libcamera-hello --qt-preview
 
 ### Working and tried stuff
 
- ```
+```
 
 libcamera-vid -t 0 --inline --listen -o tcp://0.0.0.0:<port>
 
@@ -53,6 +49,38 @@ ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flag
 
 
 ```
+
+```
+crontab -l
+crontab -e
+
+sudo apt install screen -y
+```
+
+```bash 
+
+@reboot (. ~/.profile; /usr/bin/screen -dmS StreamingServer ~/startStream.sh)
+
+```
+startStream.sh   # Rememper to chmod + x startStream.sh
+
+```bash
+
+#!/bin/bash
+
+sleep 10
+
+while :
+do
+	echo "Press [CTRL+C] to stop.."
+	libcamera-vid -t 0 --inline --listen --width 640 --height 480 --rotation 180 --codec mjpeg -n -o tcp://0.0.0.0:8888
+	sleep 5
+done
+
+```
+
+
+
 
 
 ### What need to be done to make a ultra low latency IP camera stream ?
