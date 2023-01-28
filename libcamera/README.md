@@ -22,7 +22,6 @@ vlc tcp/mjpeg://192.168.1.166:8888
 
 
 # This worked on the Desktop
-# enabled i2c and spi in raspi-config 28.01.2023 did not do this for lite (probably not needed !
 libcamera-hello --qt-preview
 
 
