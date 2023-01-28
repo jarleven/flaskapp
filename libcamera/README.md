@@ -1,7 +1,5 @@
 ### Streaming server
-#### 27.01.2023 Bullseye 32bit Desktop
-
-```bash
+#### 27.01.2023 Bullseye 32bit Desktop @ Raspberry Pi 3
 
 # enabled i2c and spi in raspi-config
 # apt update and apt upgrade
