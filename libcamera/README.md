@@ -91,6 +91,8 @@ done
 * https://stackoverflow.com/questions/62789865/ffmpeg-zero-latency-webcam-streaming
 * http://www.wumpus-cave.net/2015/11/06/low-latency-fpv-streaming-with-the-raspberry-pi/
 
+### Gstreamer
+* https://qengineering.eu/install-gstreamer-1.18-on-raspberry-pi-4.html
 
 ### 3D models and drawings
 
