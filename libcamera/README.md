@@ -1,11 +1,20 @@
 ### Streaming server
-#### 27.01.2023 Bullseye 32bit Desktop @ Raspberry Pi 3
 
-# enabled i2c and spi in raspi-config
-# apt update and apt upgrade
+#### 27.01.2023 Bullseye 32bit Desktop @ Raspberry Pi 3
+#### 28.01.2023 Bullseye 64bit lite @ Raspberry Pi 3
+
+
+```bash
+
+sudo apt update && apt upgrade -y
+reboot
+libcamera-hello
 
 # Streaming server  
 libcamera-vid -t 0 --inline --listen --width 640 --height 480 --codec mjpeg -n -o tcp://0.0.0.0:8888
+
+sudo apt update && apt upgrade -y
+
  
 libcamera-vid -t 0 --inline --listen --width 640 --height 480 --awb tungsten --rotation 180 --codec mjpeg -n -o tcp://0.0.0.0:8888
 
@@ -16,7 +25,8 @@ ffplay tcp://192.168.1.166:8888 -vf "setpts=N/30" -fflags nobuffer -flags low_de
 vlc tcp/mjpeg://192.168.1.166:8888
 
 
-# Did this worked on the Desktop
+# This worked on the Desktop
+# enabled i2c and spi in raspi-config 28.01.2023 did not do this for lite (probably not needed !
 libcamera-hello --qt-preview
 
 
