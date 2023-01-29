@@ -97,6 +97,25 @@ done
 
 ### Gstreamer
 * https://qengineering.eu/install-gstreamer-1.18-on-raspberry-pi-4.html
+```
+
+
+gst-launch-1.0 libcamerasrc ! video/x-raw, width=640, height=480, framerate=30/1 ! videoconvert ! videoscale ! jpegenc ! rtpjpegpay ! udpsink host=192.168.3.153 port=5200
+
+
+
+
+vlc test_mjpg.sdp 
+
+m=video 5200 RTP/AVP 26
+c=IN IP4 192.168.3.147
+a=rtpmap:26 JPEG/90000
+
+
+
+```
+
+
 
 ### 3D models and drawings
 
