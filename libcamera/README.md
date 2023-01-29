@@ -18,7 +18,11 @@ libcamera-vid -t 0 --inline --listen --width 640 --height 480 --awb tungsten --r
 ffplay tcp://192.168.1.166:8888 -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
  
 # Playback on VLC
-vlc tcp/mjpeg://192.168.1.166:8888
+vlc tcp/mjpeg://192.168.1.166:8888 --network-caching=0
+
+# On Windows cd into the directory first (.exe might not be needed)
+cd C:\Program Files\VideoLAN\VLC
+vlc.exe tcp/mjpeg://192.168.3.147:8888 --network-caching=0
 
 
 # This worked on the Desktop
