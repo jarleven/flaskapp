@@ -18,7 +18,11 @@ libcamera-vid -t 0 --inline --listen --width 640 --height 480 --awb tungsten --r
 ffplay tcp://192.168.1.166:8888 -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
  
 # Playback on VLC
-vlc tcp/mjpeg://192.168.1.166:8888
+vlc tcp/mjpeg://192.168.1.166:8888 --network-caching=0
+
+# On Windows cd into the directory first (.exe might not be needed)
+cd C:\Program Files\VideoLAN\VLC
+vlc.exe tcp/mjpeg://192.168.3.147:8888 --network-caching=0
 
 
 # This worked on the Desktop
@@ -61,7 +65,7 @@ sudo apt install screen -y
 @reboot (. ~/.profile; /usr/bin/screen -dmS StreamingServer ~/startStream.sh)
 
 ```
-startStream.sh   # Rememper to chmod + x startStream.sh
+vi startStream.sh   # Remember to chmod + x startStream.sh
 
 ```bash
 
@@ -93,6 +97,25 @@ done
 
 ### Gstreamer
 * https://qengineering.eu/install-gstreamer-1.18-on-raspberry-pi-4.html
+```
+
+
+gst-launch-1.0 libcamerasrc ! video/x-raw, width=640, height=480, framerate=30/1 ! videoconvert ! videoscale ! jpegenc ! rtpjpegpay ! udpsink host=192.168.3.153 port=5200
+
+
+
+
+vlc test_mjpg.sdp 
+
+m=video 5200 RTP/AVP 26
+c=IN IP4 192.168.3.147
+a=rtpmap:26 JPEG/90000
+
+
+
+```
+
+
 
 ### 3D models and drawings
 
