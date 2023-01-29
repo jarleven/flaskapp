@@ -61,7 +61,7 @@ sudo apt install screen -y
 @reboot (. ~/.profile; /usr/bin/screen -dmS StreamingServer ~/startStream.sh)
 
 ```
-startStream.sh   # Rememper to chmod + x startStream.sh
+vi startStream.sh   # Remember to chmod + x startStream.sh
 
 ```bash
 
