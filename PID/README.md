@@ -38,7 +38,6 @@ https://github.com/joshnewans/ros_arduino_bridge
   #define RIGHT_MOTOR_PWM 6
 
 
-
   pinMode(LEFT_MOTOR_A,    OUTPUT);
   pinMode(LEFT_MOTOR_B,    OUTPUT);
   pinMode(LEFT_MOTOR_PWM,  OUTPUT);
@@ -46,6 +45,11 @@ https://github.com/joshnewans/ros_arduino_bridge
   pinMode(RIGHT_MOTOR_B,   OUTPUT);
   pinMode(RIGHT_MOTOR_PWM, OUTPUT);
 
+
+  #define LEFT_ENC_PIN_A  PD2  //pin 2
+  #define LEFT_ENC_PIN_B  PD3  //pin 3
+  #define RIGHT_ENC_PIN_A PC4  //pin A4
+  #define RIGHT_ENC_PIN_B PC5  //pin A5
 
 ```
 
