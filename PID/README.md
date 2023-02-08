@@ -71,6 +71,9 @@ Arduino Pins 5 and 6: 1kHz
 
 ```
 
+### ROS Arduino differential drive
+* https://github.com/joshnewans/ros_arduino_bridge
+
 ```
          _____________________________
         |                             |
