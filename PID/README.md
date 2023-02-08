@@ -23,50 +23,28 @@ https://community.element14.com/products/arduino/b/blog/posts/simple-arduino-dc-
 # ROS Arduino differential drive
 https://github.com/joshnewans/ros_arduino_bridge
 
+```
 
-Arduino Pins 5 and 6: 1kHz
+```
 
-#ifdef ARDUINO_ENC_COUNTER
-  //below can be changed, but should be PORTD pins; 
-  //otherwise additional changes in the code are required
-  #define LEF4T_ENC_PIN_A PD2  //pin 2
-  #define LEFT_ENC_PIN_B PD3  //pin 3
-  
-  //below can be changed, but should be PORTC pins
-  #define RIGHT_ENC_PIN_A PC4  //pin A4
-  #define RIGHT_ENC_PIN_B PC5   //pin A5
-#endif
+  Arduino Pins 5 and 6: 1kHz
 
 
-
-#ifdef L298_MOTOR_DRIVER
-  #define RIGHT_MOTOR_BACKWARD 5
-  #define LEFT_MOTOR_BACKWARD  6
-  #define RIGHT_MOTOR_FORWARD  9
-  #define LEFT_MOTOR_FORWARD   10
-  #define RIGHT_MOTOR_ENABLE 12
-  #define LEFT_MOTOR_ENABLE 13
-#endif
+  #define LEFT_MOTOR_A    7
+  #define LEFT_MOTOR_B    8
+  #define LEFT_MOTOR_PWM  5
+  #define RIGHT_MOTOR_A   9
+  #define RIGHT_MOTOR_B   10
+  #define RIGHT_MOTOR_PWM 6
 
 
 
-
-
-
-#define MA_PWM 5
-#define MA_A 3
-#define MA_B 4
-
-#define MB_PWM 6
-#define MB_A 7
-#define MB_B 8
-
-  pinMode(MA_A,   OUTPUT);
-  pinMode(MA_B,   OUTPUT);
-  pinMode(MA_PWM, OUTPUT); // PWM
-  pinMode(MB_PWM, OUTPUT); // PWM
-  pinMode(MB_A,   OUTPUT);
-  pinMode(MB_B,   OUTPUT);
+  pinMode(LEFT_MOTOR_A,    OUTPUT);
+  pinMode(LEFT_MOTOR_B,    OUTPUT);
+  pinMode(LEFT_MOTOR_PWM,  OUTPUT);
+  pinMode(RIGHT_MOTOR_A,   OUTPUT);
+  pinMode(RIGHT_MOTOR_B,   OUTPUT);
+  pinMode(RIGHT_MOTOR_PWM, OUTPUT);
 
 
 ```
@@ -79,7 +57,7 @@ Arduino Pins 5 and 6: 1kHz
         |                             |
         |                    Motor 1  |   Left
         |                             |
-        |                             |
+   L    |                R            |
         |    +   +                    |
   [D5]  |    P1  P2     [D6]          |
   [D7]  |    A1  A2     [D9]          |
