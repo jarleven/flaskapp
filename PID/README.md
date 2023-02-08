@@ -92,13 +92,13 @@ Arduino Pins 5 and 6: 1kHz
 
         Left
        --------
-	ENC1_A     D2
-	ENC1_B     D3
+	ENC1_A     [D2]
+	ENC1_B     [D3]
 
         Right
        -------
-	ENC2_A     A4
-	ENC2_B     A5
+	ENC2_A     [A4]
+	ENC2_B     [A5]
 
 
  
