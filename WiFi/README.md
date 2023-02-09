@@ -27,3 +27,11 @@ blacklist btbcm
 blacklist hci_uart
 
 ```
+
+
+## WiFi status 
+ * https://github.com/uoaerg/wavemon
+
+
+ * watch -n1 iwconfig
+
