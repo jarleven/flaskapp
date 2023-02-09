@@ -31,16 +31,16 @@ https://github.com/joshnewans/ros_arduino_bridge
 
 	// Motor 1
 
-  #define LEFT_MOTOR_PWM  5
-  #define LEFT_MOTOR_A    7
-  #define LEFT_MOTOR_B    8
+  #define LEFT_MOTOR_PWM  5	// Orange
+  #define LEFT_MOTOR_A    7	// Gray
+  #define LEFT_MOTOR_B    8	// White
   
 
 	// Motor 2
 
-  #define RIGHT_MOTOR_PWM 6
-  #define RIGHT_MOTOR_A   9
-  #define RIGHT_MOTOR_B   10
+  #define RIGHT_MOTOR_PWM 6	// Purple
+  #define RIGHT_MOTOR_A   9	// Blue
+  #define RIGHT_MOTOR_B   10	// Green
 
 
   pinMode(LEFT_MOTOR_A,    OUTPUT);
@@ -53,13 +53,13 @@ https://github.com/joshnewans/ros_arduino_bridge
 
 	// Motor 1
 
-  #define LEFT_ENC_PIN_A  PD2  //pin 2
-  #define LEFT_ENC_PIN_B  PD3  //pin 3
+  #define LEFT_ENC_PIN_A  PD2  //pin 2   Yellow (Purple on Motor 1) 
+  #define LEFT_ENC_PIN_B  PD3  //pin 3	 Green (Blue on Motor 1)
 
 	// Motor 2
 
-  #define RIGHT_ENC_PIN_A PC4  //pin A4
-  #define RIGHT_ENC_PIN_B PC5  //pin A5
+  #define RIGHT_ENC_PIN_A PC4  //pin A4	Yellow
+  #define RIGHT_ENC_PIN_B PC5  //pin A5 Green
 
 ```
 
