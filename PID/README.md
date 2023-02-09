@@ -61,6 +61,17 @@ https://github.com/joshnewans/ros_arduino_bridge
   #define RIGHT_ENC_PIN_A PC4  //pin A4	Yellow
   #define RIGHT_ENC_PIN_B PC5  //pin A5 Green
 
+
+    if (i == LEFT) { 
+      if      (reverse == 0) { analogWrite(LEFT_MOTOR_PWM, spd); digitalWrite(LEFT_MOTOR_A, HIGH); digitalWrite(LEFT_MOTOR_B, LOW); }
+      else if (reverse == 1) { analogWrite(LEFT_MOTOR_PWM, spd); digitalWrite(LEFT_MOTOR_A, LOW); digitalWrite(LEFT_MOTOR_B, HIGH); }
+      
+    }
+    else /*if (i == RIGHT) //no need for condition*/ {
+      if      (reverse == 0) { analogWrite(RIGHT_MOTOR_PWM, spd); digitalWrite(RIGHT_MOTOR_A, HIGH); digitalWrite(RIGHT_MOTOR_B, LOW); }
+      else if (reverse == 1) { analogWrite(RIGHT_MOTOR_PWM, spd); digitalWrite(RIGHT_MOTOR_A, LOW); digitalWrite(RIGHT_MOTOR_B, HIGH); }
+    }
+
 ```
 
 ### ROS Arduino differential drive
