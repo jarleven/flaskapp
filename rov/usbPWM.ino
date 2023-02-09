@@ -18,6 +18,11 @@
 // Debugging switches and macros
 #define DEBUG 0 // Switch debug output on and off by 1 or 0
 
+/* Stop the robot if it hasn't received a movement command in this number of milliseconds */
+#define AUTO_STOP_INTERVAL 2000
+long lastMotorCommand = AUTO_STOP_INTERVAL;
+# The autostop is copied from https://github.com/joshnewans/ros_arduino_bridge/blob/main/ROSArduinoBridge/ROSArduinoBridge.ino
+
 
 #if DEBUG
 #define PRINTS(s)   { Serial.print(F(s)); }
@@ -122,6 +127,7 @@ void loop() {
 
       if(endOfLine=='s')
         runMotor(motorA, motorB);
+        lastMotorCommand = millis();
       else
         errorMsg=true;
     }
@@ -136,6 +142,13 @@ void loop() {
     printError();
     digitalWrite(LED_BUILTIN, LOW);     //Sticky error LED, will never trun on again
   }
+
+
+  // Check to see if we have exceeded the auto-stop interval
+  if ((millis() - lastMotorCommand) > AUTO_STOP_INTERVAL) {;
+    runMotor(0, 0);
+  }
+
 }
 
 
