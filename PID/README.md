@@ -27,15 +27,20 @@ https://github.com/joshnewans/ros_arduino_bridge
 
 ```
 
-  Arduino Pins 5 and 6: 1kHz
+  // ArduinoUno Pins 5 and 6: 1kHz PWM
 
+	// Motor 1
 
+  #define LEFT_MOTOR_PWM  5
   #define LEFT_MOTOR_A    7
   #define LEFT_MOTOR_B    8
-  #define LEFT_MOTOR_PWM  5
+  
+
+	// Motor 2
+
+  #define RIGHT_MOTOR_PWM 6
   #define RIGHT_MOTOR_A   9
   #define RIGHT_MOTOR_B   10
-  #define RIGHT_MOTOR_PWM 6
 
 
   pinMode(LEFT_MOTOR_A,    OUTPUT);
@@ -46,8 +51,13 @@ https://github.com/joshnewans/ros_arduino_bridge
   pinMode(RIGHT_MOTOR_PWM, OUTPUT);
 
 
+	// Motor 1
+
   #define LEFT_ENC_PIN_A  PD2  //pin 2
   #define LEFT_ENC_PIN_B  PD3  //pin 3
+
+	// Motor 2
+
   #define RIGHT_ENC_PIN_A PC4  //pin A4
   #define RIGHT_ENC_PIN_B PC5  //pin A5
 
@@ -57,28 +67,43 @@ https://github.com/joshnewans/ros_arduino_bridge
 * https://github.com/joshnewans/ros_arduino_bridge
 
 ```
-         _____________________________
-        |                             |
-        |                    Motor 1  |   Left
-        |                             |
-   L    |                R            |
-        |    +   +                    |
-  [D5]  |    P1  P2     [D6]          |
-  [D7]  |    A1  A2     [D9]          |
-  [D8]  |    B1  B2     [D10]         |
-        |    -   -                    |
-        |                             |
-        |                    Motor2   |   Right
-        |_____________________________|
+  Number of encoder counts per PID loop
+
+  PID loop 30/sec
+
+  1 rev per sec
+
+  counts per revolution  /  PID loops/sec
+
+  3450/30=115 115counts per loop
+
+  https://youtu.be/-PCuDnpgiew?t=1293
+```
 
 
-        Left
-       --------
+```
+          _____________________________
+         |                             |
+         |                    Motor 1  |   Left
+         |                             |
+   -L-   |                -R-          |
+         |    +   +                    |
+  [D5]   |    P1  P2     [D6]          |
+  [D7]   |    A1  A2     [D9]          |
+  [D8]   |    B1  B2     [D10]         |
+         |    -   -                    |
+         |                             |
+         |                    Motor2   |   Right
+         |_____________________________|
+
+
+        Left - Motor 1
+       ------------------
 	ENC1_A     [D2]
 	ENC1_B     [D3]
 
-        Right
-       -------
+        Right - Motor 2
+       ------------------
 	ENC2_A     [A4]
 	ENC2_B     [A5]
 
