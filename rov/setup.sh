@@ -17,17 +17,6 @@ wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rov/setup.sh && ch
 # Ted Mielczarek https://github.com/luser/gamepadtest.git
 # Nazmus Nasir https://github.com/naztronaut/RaspberryPi-RGBW-Control
 
-: '
-```
-  Function        GPIO    40-Pin header
- ---------------------------------------
-  Right Forward    24        18  
-  Right Reverse    25        22
-  Left Forward     20        38
-  Left Reverse     18        12
-```
-'
-
 
 sudo apt update
 sudp apt upgrade -y
@@ -48,12 +37,12 @@ sudo apt install -y libapache2-mod-wsgi-py3
 
 # TODO investigate a bit regarding the pigpio https://abyz.me.uk/rpi/pigpio/download.html
 
-sudo apt install -y pigpio
-sudo apt install -y python3-pigpio
+#sudo apt install -y pigpio
+#sudo apt install -y python3-pigpio
 
 # Auto-/start the pigpio daemon
-sudo systemctl enable pigpiod
-sudo systemctl start pigpiod 
+#sudo systemctl enable pigpiod
+#sudo systemctl start pigpiod 
 
 sudo pip3 install flask
 
