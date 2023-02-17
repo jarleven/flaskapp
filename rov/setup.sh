@@ -64,15 +64,16 @@ cd ~/flaskapp/rov
 
 sudo rm /var/www/html/index.html
 
+sudo rm -rf /var/www/html/rov
 sudo mkdir /var/www/html/rov
 
-sudo cp apache-rov.conf /etc/apache2/sites-available/
+sudo /cp -r apache-rov.conf /etc/apache2/sites-available/
 
-sudo cp gamepadtest.js /var/www/html/
-sudo cp index.html /var/www/html/
+sudo /cp -r gamepadtest.js /var/www/html/
+sudo /cp -r index.html /var/www/html/
 
-sudo cp rov.py /var/www/html/rov/
-sudo cp rov.wsgi /var/www/html/rov/
+sudo /cp -r rov.py /var/www/html/rov/
+sudo /cp -r rov.wsgi /var/www/html/rov/
 
 
 sudo chown -R pi:pi /var/www/html
