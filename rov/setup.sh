@@ -7,8 +7,6 @@ wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rov/setup.sh && ch
 
 '
 
-
-
 ###
 # The script can run on a fresh Raspberry Pi, everything is downloaded, installed and configured.
 # Tested on RPi4 and Bullseye.
@@ -29,11 +27,6 @@ fi
 sudo apt update
 sudo apt upgrade -y
 
-#sudo apt remove -y python2
-#sudo apt remove -y python-is-python2
-#sudo apt autoremove -y --purge
-#sudo apt update
-
 sudo apt install -y git vim
 
 sudo apt install -y python3 python3-pip
@@ -41,22 +34,10 @@ sudo apt install -y python3 python3-pip
 sudo apt install -y apache2
 sudo apt install -y libapache2-mod-wsgi-py3
 
-#sudo apt-get install -y python-is-python3
-
-# TODO investigate a bit regarding the pigpio https://abyz.me.uk/rpi/pigpio/download.html
-
-#sudo apt install -y pigpio
-#sudo apt install -y python3-pigpio
-
-# Auto-/start the pigpio daemon
-#sudo systemctl enable pigpiod
-#sudo systemctl start pigpiod 
-
 sudo pip3 install flask
 
 # TODO: Check what/why
 sudo a2enmod headers
-
 
 git clone https://github.com/jarleven/flaskapp.git
 
@@ -67,43 +48,21 @@ sudo rm /var/www/html/index.html
 sudo rm -rf /var/www/html/rov
 sudo mkdir /var/www/html/rov
 
-sudo /cp -r apache-rov.conf /etc/apache2/sites-available/
+sudo \cp -r apache-rov.conf /etc/apache2/sites-available/
 
-sudo /cp -r gamepadtest.js /var/www/html/
-sudo /cp -r index.html /var/www/html/
+sudo \cp -r gamepadtest.js /var/www/html/
+sudo \cp -r index.html /var/www/html/
 
-sudo /cp -r rov.py /var/www/html/rov/
-sudo /cp -r rov.wsgi /var/www/html/rov/
-
+sudo \cp -r rov.py /var/www/html/rov/
+sudo \cp -r rov.wsgi /var/www/html/rov/
 
 sudo chown -R pi:pi /var/www/html
 
-# Start the pigpio daemon (Also added to crontab in the end)
-#sudo pigpiod
-
-#sudo a2dissite apache-rov.conf
 sudo a2dissite 000-default.conf
-
 sudo a2ensite apache-rov.conf
-#sudo service apache2 restart
-
 sudo systemctl reload apache2
 
 # Debugging Apache2
 # tail -f /var/log/apache2/other_vhosts_access.log
 # tail -f /var/log/apache2/error.log
 # tail -f /home/pi/record.log
-
-
-
-
-
-
-
-# In case the crontab does not exist we need to catch and handle some errors
-# For testing, delete the cronab for user pi with :
-#  crontab -r -u pi
-# In the crontab add
-# @reboot sudo pigpiod
-
-#cat <(crontab -l 2>/dev/null) <(echo "@reboot sudo pigpiod") | crontab -
