@@ -21,7 +21,7 @@
 /* Stop the robot if it hasn't received a movement command in this number of milliseconds */
 #define AUTO_STOP_INTERVAL 2000
 long lastMotorCommand = AUTO_STOP_INTERVAL;
-# The autostop is copied from https://github.com/joshnewans/ros_arduino_bridge/blob/main/ROSArduinoBridge/ROSArduinoBridge.ino
+// The autostop is copied from https://github.com/joshnewans/ros_arduino_bridge/blob/main/ROSArduinoBridge/ROSArduinoBridge.ino
 
 
 #if DEBUG
