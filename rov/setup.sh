@@ -40,6 +40,8 @@ sudo pip3 install flask
 sudo a2enmod headers
 
 git clone https://github.com/jarleven/flaskapp.git
+cd ~/flaskapp
+git pull
 
 cd ~/flaskapp/rov
 
