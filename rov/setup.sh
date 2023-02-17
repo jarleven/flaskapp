@@ -27,7 +27,7 @@ fi
 
 
 sudo apt update
-sudp apt upgrade -y
+sudo apt upgrade -y
 
 #sudo apt remove -y python2
 #sudo apt remove -y python-is-python2
