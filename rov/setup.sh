@@ -13,6 +13,14 @@ wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rov/setup.sh && ch
 # The script can run on a fresh Raspberry Pi, everything is downloaded, installed and configured.
 # Tested on RPi4 and Bullseye.
 
+# Trying on x86/Ubuntu and NVIDIA Jetson Nano
+# During installation use username "pi"
+
+if [ $USER != "pi" ]; then
+        echo "Script must be run as user: pi"
+        exit -1
+fi
+
 # Credits to :
 # Ted Mielczarek https://github.com/luser/gamepadtest.git
 # Nazmus Nasir https://github.com/naztronaut/RaspberryPi-RGBW-Control
