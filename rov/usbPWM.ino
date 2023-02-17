@@ -125,11 +125,13 @@ void loop() {
 
     if(sscanf(buffer, "%d,%d,%c", &motorA, &motorB, &endOfLine) == 3){
 
-      if(endOfLine=='s')
+      if(endOfLine=='s') {
         runMotor(motorA, motorB);
         lastMotorCommand = millis();
-      else
+      }
+      else {
         errorMsg=true;
+      }
     }
     else
       errorMsg=true;
