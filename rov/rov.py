@@ -1,17 +1,14 @@
 from flask import Flask, request, jsonify
-#import pigpio
 import json
 import logging
  
 
 app = Flask(__name__)
-#pi = pigpio.pi()
 
 # Log file ends up in/home/pi
 logging.basicConfig(filename='record.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
 
 app.logger.info('Is this ever printed')
-
 
 def pwm(val):
     
@@ -43,18 +40,8 @@ def led():
     right = float(request.args.get('green'))
 
     app.logger.info('RGB LED function %f  %f' % (left, right))
-
- 
-    redR,greenR = pwm(right)
-    redL,greenL = pwm(left)
- 
     
-    #pi.set_PWM_dutycycle(24, redR)
-    #pi.set_PWM_dutycycle(25, greenR)
-
-    #pi.set_PWM_dutycycle(20, redL)
-    #pi.set_PWM_dutycycle(18, greenL)
-    
+    # send Left and Right values over the serial port
 
     return jsonify({"red": left, "green": right, "blue": 0})
 
