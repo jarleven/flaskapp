@@ -1,3 +1,9 @@
+https://skjoldtech.wordpress.com/2019/05/10/flashing-arduino-hex-file-in-linux-with-avrdude/
+
+sudo apt-get install avrdude
+avrdude -v -p atmega328p -c arduino -P /dev/ttyUSB0 -b 57600 -D -U flash:w:/home/pi/flaskapp/usbPWM.ino.hex:i
+
+
 https://forum.arduino.cc/t/faster-uploads-than-arduino-cli-upload/1052037
 
 I'm trying to use arduino-cli to upload a pre-compiled and exported .hex file to a Nano connected via USB to an old Raspberry Pi (with 256mb RAM, relatively slow IO, etc). My sketch is about 50K when compiled.

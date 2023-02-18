@@ -36,6 +36,9 @@ sudo apt install -y libapache2-mod-wsgi-py3
 
 sudo pip3 install flask
 
+# Add the pi user to the dialout group (Serial motorcontroller now)
+sudo usermod -a -G dialout pi
+
 # TODO: Check what/why
 sudo a2enmod headers
 
