@@ -7,7 +7,7 @@ sudo apt-get install avrdude
 sudo usermod -a -G dialout pi
 #sudo chmod a+rw /dev/ttyUSB0
 
-sudo avrdude -v -V -p atmega328p -c arduino -P /dev/ttyACM0 -b 115200 -D -U flash:w:/home/pi/flaskapp/rov/usbPWM.ino.hex:i
+sudo avrdude -v -V -p atmega328p -c arduino -P /dev/ttyACM0 -b 115200 -D -U flash:w:/home/pi/flaskapp/rov/Arduino/usbPWM.ino.hex:i
 ```
 
 ### Output when uploading hex file to Arduino Uno
