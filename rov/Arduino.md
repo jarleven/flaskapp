@@ -1,19 +1,90 @@
-https://skjoldtech.wordpress.com/2019/05/10/flashing-arduino-hex-file-in-linux-with-avrdude/
+Nice guide at : 
+* https://skjoldtech.wordpress.com/2019/05/10/flashing-arduino-hex-file-in-linux-with-avrdude/
 
+```
 sudo apt-get install avrdude
-avrdude -v -p atmega328p -c arduino -P /dev/ttyUSB0 -b 57600 -D -U flash:w:/home/pi/flaskapp/usbPWM.ino.hex:i
+
+sudo usermod -a -G dialout pi
+#sudo chmod a+rw /dev/ttyUSB0
+
+sudo avrdude -v -V -p atmega328p -c arduino -P /dev/ttyACM0 -b 115200 -D -U flash:w:/home/pi/flaskapp/rov/usbPWM.ino.hex:i
+```
+
+### Output when uploading hex file to Arduino Uno
+```
+avrdude: Version 6.3-20171130
+         Copyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/
+         Copyright (c) 2007-2014 Joerg Wunsch
+
+         System wide configuration file is "/etc/avrdude.conf"
+         User configuration file is "/root/.avrduderc"
+         User configuration file does not exist or is not a regular file, skipping
+
+         Using Port                    : /dev/ttyACM0
+         Using Programmer              : arduino
+         Overriding Baud Rate          : 115200
+         AVR Part                      : ATmega328P
+         Chip Erase delay              : 9000 us
+         PAGEL                         : PD7
+         BS2                           : PC2
+         RESET disposition             : dedicated
+         RETRY pulse                   : SCK
+         serial program mode           : yes
+         parallel program mode         : yes
+         Timeout                       : 200
+         StabDelay                     : 100
+         CmdexeDelay                   : 25
+         SyncLoops                     : 32
+         ByteDelay                     : 0
+         PollIndex                     : 3
+         PollValue                     : 0x53
+         Memory Detail                 :
+
+                                  Block Poll               Page                       Polled
+           Memory Type Mode Delay Size  Indx Paged  Size   Size #Pages MinW  MaxW   ReadBack
+           ----------- ---- ----- ----- ---- ------ ------ ---- ------ ----- ----- ---------
+           eeprom        65    20     4    0 no       1024    4      0  3600  3600 0xff 0xff
+           flash         65     6   128    0 yes     32768  128    256  4500  4500 0xff 0xff
+           lfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           hfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           efuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           lock           0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           calibration    0     0     0    0 no          1    0      0     0     0 0x00 0x00
+           signature      0     0     0    0 no          3    0      0     0     0 0x00 0x00
+
+         Programmer Type : Arduino
+         Description     : Arduino
+         Hardware Version: 3
+         Firmware Version: 3.3
+         Vtarget         : 0.3 V
+         Varef           : 0.3 V
+         Oscillator      : 28.800 kHz
+         SCK period      : 3.3 us
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f (probably m328p)
+avrdude: safemode: lfuse reads as 0
+avrdude: safemode: hfuse reads as 0
+avrdude: safemode: efuse reads as 0
+avrdude: reading input file "/home/pi/flaskapp/rov/usbPWM.ino.hex"
+avrdude: writing flash (4328 bytes):
+
+Writing | ################################################## | 100% 0.70s
+
+avrdude: 4328 bytes of flash written
+
+avrdude: safemode: lfuse reads as 0
+avrdude: safemode: hfuse reads as 0
+avrdude: safemode: efuse reads as 0
+avrdude: safemode: Fuses OK (E:00, H:00, L:00)
+
+avrdude done.  Thank you.
+```
 
 
-https://forum.arduino.cc/t/faster-uploads-than-arduino-cli-upload/1052037
 
-I'm trying to use arduino-cli to upload a pre-compiled and exported .hex file to a Nano connected via USB to an old Raspberry Pi (with 256mb RAM, relatively slow IO, etc). My sketch is about 50K when compiled.
 
-Running arduino-cli upload -p /dev/ttyUSB0 --fqbn arduino:avr:nano -i mysketch.ino.eightanaloginputs.hex takes a good few minutes, consumes around 100MB of RAM and on my very resource-constrained system, sometimes fails altogether.
 
-I went in search of something "better". I appreciate this is a bit specific to my setup, and so other chip and board types may need to do something different, but this works in a fraction of the time, with a fraction of the resources:
-
-avrdude -v -patmega328p -carduino -b115200 -P /dev/ttyUSB0 -D -Uflash:w:mysketch.ino.eightanaloginputs.hex
-
-To get the .hex file, I'm writing the code on my laptop in the Arduino IDE (with the board type set to "Nano", as that's what I'm using) and clicking Sketch->Export Compiled Binary. It's creating the file mysketch.ino.eightanaloginputs.hex in the project folder, which I'm then SCPing over to the Raspberry Pi to upload to the Arduino. If you're just starting out on the Pi, then you'll need to run sudo apt install avrdude to get the avrdude program.
-
-I hope this maybe helps someone else out some day :slight_smile:
