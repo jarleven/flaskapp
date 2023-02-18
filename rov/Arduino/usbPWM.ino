@@ -5,6 +5,8 @@
  * https://stackoverflow.com/questions/57558398/importing-python-script-that-contain-serial-initialization-into-flask-app
  */
 
+/**
+ Original, for reference
 #define MA_PWM 5
 #define MA_A 3
 #define MA_B 4
@@ -12,6 +14,17 @@
 #define MB_PWM 6
 #define MB_A 7
 #define MB_B 8
+**/
+
+#define MA_PWM 5
+#define MA_A 7
+#define MA_B 8
+
+#define MB_PWM 6
+#define MB_A 9
+#define MB_B 10
+
+
 
 #define DAC_MAXVALUE 255 // The Arduino Uno DAC is 8-bits 0..255
 
