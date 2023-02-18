@@ -10,6 +10,15 @@ sudo usermod -a -G dialout pi
 sudo avrdude -v -V -p atmega328p -c arduino -P /dev/ttyACM0 -b 115200 -D -U flash:w:/home/pi/flaskapp/rov/Arduino/usbPWM/usbPWM.ino.hex:i
 ```
 
+### Fix issue (Was using Ubunti 22.10) with Chinese Arduino clone
+```
+ch341-uart ttyUSB0: ch341-uart converter now disconnected from ttyUSB0
+sudo apt remove brltty
+```
+
+
+
+
 ### Output when uploading hex file to Arduino Uno
 ```
 avrdude: Version 6.3-20171130
