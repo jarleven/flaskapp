@@ -16,6 +16,8 @@ ch341-uart ttyUSB0: ch341-uart converter now disconnected from ttyUSB0
 sudo apt remove brltty
 ```
 
+CH341 driver 
+* http://www.wch-ic.com/products/CH341.html
 
 
 
