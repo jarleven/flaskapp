@@ -4,15 +4,15 @@ import logging
 import serial 
 
 # Arduino Uno is normally /dev/ttyACM0. Setup non blocking serialport
-ser = serial.Serial('/dev/ttyACM0', 115200, timeout=0,  write_timeout=0)
-
+#ser = serial.Serial('/dev/ttyACM0', 115200, timeout=0,  writeTimeout=0)
+ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=0,  writeTimeout=0)
 
 app = Flask(__name__)
 
-# Log file ends up in/home/pi
+# Log file ends up in /home/pi
 logging.basicConfig(filename='record.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
 
-app.logger.info('Is this ever printed')
+app.logger.info('Is this ever printed....')
 
 
 # {{url}}/led?status=on
@@ -31,11 +31,11 @@ def led():
     #app.logger.info('RGB LED function %f  %f' % (left, right))
     
     # send Left and Right values over the serial port
-    test=("%s,%s,s\n" % (str(int(right * 255)), str(int(left * 255))))
-    #app.logger.info(test)
+    serialdata=("%s,%s,s\n" % (str(int(right * 255)), str(int(left * 255))))
+    #app.logger.info(serialdata)
     
-    if serial.out_waiting() < 20:
-        ser.write(test.encode())
+    if ser.out_waiting < 20:
+        ser.write(serialdata.encode())
 
 
     return jsonify({"red": left, "green": right, "blue": 0})
