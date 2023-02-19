@@ -114,7 +114,7 @@ void setup() {
   pinMode(MB_B,   OUTPUT);
 
   Serial.begin(115200);
-  Serial.println("EidVgs serial motor controller v0.2");
+  Serial.println("EidVgs serial motor controller v0.3");
   digitalWrite(LED_BUILTIN, HIGH);
 }
 

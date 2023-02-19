@@ -1,3 +1,24 @@
+
+### Cleanup this section	
+```
+https://www.youtube.com/watch?v=JFTJ2SS4xyA
+
+
+https://www.youtube.com/watch?v=kdBY0NPZ71k
+https://vanhunteradams.com/
+
+
+
+
+
+ATMega ? 
+https://github.com/RajPShinde/PID_Speed_Controller_for_DC_Motor/blob/master/PID_Speed_Controller/PID_Speed_Controller.ino
+
+
+Brukar kun ein ISR pinne per motor. retning er ikkje så intressant det styrer jo motoren sjølv
+https://community.element14.com/products/arduino/b/blog/posts/simple-arduino-dc-motor-control-with-encoder-part-2
+```
+
 Nice guide at : 
 * https://skjoldtech.wordpress.com/2019/05/10/flashing-arduino-hex-file-in-linux-with-avrdude/
 
@@ -7,7 +28,7 @@ sudo apt-get install avrdude
 sudo usermod -a -G dialout pi
 #sudo chmod a+rw /dev/ttyUSB0
 
-sudo avrdude -v -V -p atmega328p -c arduino -P /dev/ttyACM0 -b 115200 -D -U flash:w:/home/pi/flaskapp/rov/Arduino/usbPWM/usbPWM.ino.hex:i
+sudo avrdude -v -V -p atmega328p -c arduino -P /dev/ttyACM0 -b 115200 -D -U flash:w:/home/pi/flaskapp/rov/Arduino/usbPWM/build/arduino.avr.uno/usbPWM.ino.hex:i
 ```
 
 ### Fix issue (Was using Ubunti 22.10) with Chinese Arduino clone
