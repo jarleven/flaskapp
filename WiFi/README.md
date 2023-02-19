@@ -35,3 +35,10 @@ blacklist hci_uart
 
  * watch -n1 iwconfig
 
+
+USB3 adapter
+
+TP-Link AC1300
+Archer T3U Plus
+
+Realtek 8812AU
