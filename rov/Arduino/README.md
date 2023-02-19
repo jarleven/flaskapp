@@ -7,8 +7,19 @@ sudo apt-get install avrdude
 sudo usermod -a -G dialout pi
 #sudo chmod a+rw /dev/ttyUSB0
 
-sudo avrdude -v -V -p atmega328p -c arduino -P /dev/ttyACM0 -b 115200 -D -U flash:w:/home/pi/flaskapp/rov/Arduino/usbPWM.ino.hex:i
+sudo avrdude -v -V -p atmega328p -c arduino -P /dev/ttyACM0 -b 115200 -D -U flash:w:/home/pi/flaskapp/rov/Arduino/usbPWM/usbPWM.ino.hex:i
 ```
+
+### Fix issue (Was using Ubunti 22.10) with Chinese Arduino clone
+```
+ch341-uart ttyUSB0: ch341-uart converter now disconnected from ttyUSB0
+sudo apt remove brltty
+```
+
+CH341 driver 
+* http://www.wch-ic.com/products/CH341.html
+
+
 
 ### Output when uploading hex file to Arduino Uno
 ```

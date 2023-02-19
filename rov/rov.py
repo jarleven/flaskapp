@@ -2,17 +2,29 @@ from flask import Flask, request, jsonify
 import json
 import logging
 import serial 
+import serial.tools.list_ports
 
-# Arduino Uno is normally /dev/ttyACM0. Setup non blocking serialport
-ser = serial.Serial('/dev/ttyACM0', 115200, timeout=0,  write_timeout=0)
+
+
 
 
 app = Flask(__name__)
 
-# Log file ends up in/home/pi
-logging.basicConfig(filename='record.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
+# Log file ends up in /home/pi/record.log
+# tail -f /home/pi/record.log
+# tail -f /var/log/apache2/error.log
+# sudo \cp -r /home/pi/flaskapp/rov/rov.py /var/www/html/rov/ && sudo systemctl reload apache2 && tail -f /home/pi/record.log 
+logging.basicConfig(filename='record.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)-10s : %(message)s')
 
-app.logger.info('Is this ever printed')
+app.logger.info('Is this ever printed....')
+
+myports = [tuple(p) for p in list(serial.tools.list_ports.comports())]
+app.logger.info("List of serialports :")
+app.logger.info(myports)
+
+# Arduino Uno is normally /dev/ttyACM0. Setup non blocking serialport
+#ser = serial.Serial('/dev/ttyACM0', 115200, timeout=0,  writeTimeout=0)
+ser = serial.Serial("/dev/ttyUSB0", 115200, timeout=0,  writeTimeout=0)
 
 
 # {{url}}/led?status=on
@@ -31,11 +43,11 @@ def led():
     #app.logger.info('RGB LED function %f  %f' % (left, right))
     
     # send Left and Right values over the serial port
-    test=("%s,%s,s\n" % (str(int(right * 255)), str(int(left * 255))))
-    #app.logger.info(test)
+    serialdata=("%04s,%04s,s\n" % (str(int(right * 255)), str(int(left * 255))))
+    #app.logger.info(serialdata)
     
-    if serial.out_waiting() < 20:
-        ser.write(test.encode())
+    if ser.out_waiting < 5:
+        ser.write(serialdata.encode())
 
 
     return jsonify({"red": left, "green": right, "blue": 0})
