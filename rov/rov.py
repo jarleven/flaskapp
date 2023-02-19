@@ -12,7 +12,8 @@ app = Flask(__name__)
 
 # Log file ends up in /home/pi/record.log
 # tail -f /home/pi/record.log
-# tail -f /var/log/apache2/error.log 
+# tail -f /var/log/apache2/error.log
+# sudo \cp -r /home/pi/flaskapp/rov/rov.py /var/www/html/rov/ && sudo systemctl reload apache2 && tail -f /home/pi/record.log 
 logging.basicConfig(filename='record.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)-10s : %(message)s')
 
 app.logger.info('Is this ever printed....')
