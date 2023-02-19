@@ -41,6 +41,10 @@ sudo apt install -y libapache2-mod-wsgi-py3
 sudo pip3 install flask
 sudo python3 -m pip install pyserial
 
+# Had issues with Chenese knockoff with CH341 USB2Serial chip (Ubuntu 22.10)
+# ch341-uart ttyUSB0: ch341-uart converter now disconnected from ttyUSB0
+# sudo apt remove brltty
+
 # Add the pi user to the dialout group (Serial motorcontroller now)
 sudo usermod -a -G dialout pi
 
