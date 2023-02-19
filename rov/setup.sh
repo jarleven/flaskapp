@@ -35,6 +35,7 @@ sudo apt install -y apache2
 sudo apt install -y libapache2-mod-wsgi-py3
 
 sudo pip3 install flask
+sudo python3 -m pip install pyserial
 
 # Add the pi user to the dialout group (Serial motorcontroller now)
 sudo usermod -a -G dialout pi
