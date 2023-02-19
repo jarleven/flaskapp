@@ -72,7 +72,11 @@ sudo a2dissite 000-default.conf
 sudo a2ensite apache-rov.conf
 sudo systemctl reload apache2
 
-# Debugging Apache2
-# tail -f /var/log/apache2/other_vhosts_access.log
-# tail -f /var/log/apache2/error.log
-# tail -f /home/pi/record.log
+: '
+
+Debugging Apache2
+tail -f /var/log/apache2/other_vhosts_access.log
+tail -f /var/log/apache2/error.log
+tail -f /home/pi/record.log
+
+'
