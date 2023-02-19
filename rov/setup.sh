@@ -5,6 +5,9 @@
 
 wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rov/setup.sh && chmod +x setup.sh && ./setup.sh
 
+useradd -m pi -G sudo
+sudo usermod -s /bin/bash pi
+
 '
 
 ###
