@@ -5,6 +5,7 @@
 
 wget https://raw.githubusercontent.com/jarleven/flaskapp/main/rov/setup.sh && chmod +x setup.sh && ./setup.sh
 
+# Create new user pi with home dir in sudoers group with bash shell.
 useradd -m pi -G sudo
 sudo usermod -s /bin/bash pi
 
