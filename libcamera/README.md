@@ -8,6 +8,25 @@
 Just a few things tried 24.02.2023
 ```bash
 
+Virtually no latency :
+
+####
+./test-launch "nvarguscamerasrc ! video/x-raw(memory:NVMM),width=640,height=480,framerate=25/1 ! nvvidconv ! video/x-raw(memory:NVMM),format=I420 ! nvjpegenc ! rtpjpegpay name=pay0 pt=26 "
+
+IP_ADDRESS=192.168.3.191
+PORT=8554
+MAPPING=test
+
+ffplay -rtsp_transport udp rtsp://${IP_ADDRESS}:${PORT}/${MAPPING} -vf "setpts=N/25" -fflags nobuffer -flags low_delay -framedrop
+
+####
+
+echo uri=rtsp://${IP_ADDRESS}:${PORT}/${MAPPING}
+gst-launch-1.0 playbin uri=rtsp://${IP_ADDRESS}:${PORT}/${MAPPING}
+
+
+
+
  ./test-launch "nvarguscamerasrc ! video/x-raw(memory:NVMM),width=640,height=480,framerate=25/1 ! nvvidconv ! video/x-raw(memory:NVMM),format=I420 ! nvjpegenc ! rtpjpegpay name=pay0 pt=26 "
 
  ./test-launch "( nvarguscamerasrc ! nvjpegenc ! rtpjpegpay name=pay0 pt=26 )"     
@@ -36,22 +55,6 @@ gst-launch-1.0 uridecodebin uri=rtsp://<SERVER_IP_ADDRESS>:8554/test ! nvoverlay
 
 
 
-IP_ADDRESS=192.168.3.191
-PORT=8554
-MAPPING=test
-
-echo uri=rtsp://${IP_ADDRESS}:${PORT}/${MAPPING}
-gst-launch-1.0 playbin uri=rtsp://${IP_ADDRESS}:${PORT}/${MAPPING}
-
-
-
-
-Virtually no latency :
-
-./test-launch "nvarguscamerasrc ! video/x-raw(memory:NVMM),width=640,height=480,framerate=25/1 ! nvvidconv ! video/x-raw(memory:NVMM),format=I420 ! nvjpegenc ! rtpjpegpay name=pay0 pt=26 "
-
-
-ffplay -rtsp_transport udp rtsp://${IP_ADDRESS}:${PORT}/${MAPPING} -vf "setpts=N/25" -fflags nobuffer -flags low_delay -framedrop
 
 
 
