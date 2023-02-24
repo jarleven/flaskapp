@@ -21,6 +21,10 @@ ffplay -rtsp_transport udp rtsp://${IP_ADDRESS}:${PORT}/${MAPPING} -vf "setpts=N
 
 ####
 
+Tested on Win10 "player" 
+ * https://www.gyan.dev/ffmpeg/builds/
+ * https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-5.0.1-full_build.7z
+
 echo uri=rtsp://${IP_ADDRESS}:${PORT}/${MAPPING}
 gst-launch-1.0 playbin uri=rtsp://${IP_ADDRESS}:${PORT}/${MAPPING}
 
