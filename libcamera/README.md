@@ -3,6 +3,21 @@
 #### 27.01.2023 Bullseye 32bit Desktop @ Raspberry Pi 3
 #### 28.01.2023 Bullseye 64bit lite @ Raspberry Pi 3
 
+### NVIDIA Jetson Nano
+
+Just a few things tried 24.02.2023
+```bash
+
+ ./test-launch "nvarguscamerasrc ! video/x-raw(memory:NVMM),width=640,height=480,framerate=25/1 ! nvvidconv ! video/x-raw(memory:NVMM),format=I420 ! nvjpegenc ! rtpjpegpay name=pay0 pt=26 "
+
+ ./test-launch "( nvarguscamerasrc ! nvjpegenc ! rtpjpegpay name=pay0 pt=26 )"     
+
+VLC : rtsp://192.168.1.191:8554/test
+vlc rtsp://192.168.1.166:8888 --network-caching=0
+Set buffer to 0
+
+
+```
 
 ```bash
 
