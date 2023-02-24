@@ -7,7 +7,7 @@ import serial.tools.list_ports
 import time
 
 
-UDP_IP = "192.168.3.178"
+UDP_IP = "0.0.0.0"
 UDP_PORT = 5005
 
 myports = [tuple(p) for p in list(serial.tools.list_ports.comports())]
