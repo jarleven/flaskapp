@@ -14,7 +14,47 @@ Just a few things tried 24.02.2023
 
 VLC : rtsp://192.168.1.191:8554/test
 vlc rtsp://192.168.1.166:8888 --network-caching=0
-Set buffer to 0
+
+
+https://developer.nvidia.com/embedded/learn/tutorials/first-picture-csi-usb-camera
+
+https://forums.developer.nvidia.com/t/jetson-nano-faq/82953
+
+wget https://raw.githubusercontent.com/GStreamer/gst-rtsp-server/1.14.5/examples/test-launch.c
+
+sudo apt-get install libgstrtspserver-1.0 libgstreamer1.0-dev
+gcc test-launch.c -o test-launch $(pkg-config --cflags --libs gstreamer-1.0 gstreamer-rtsp-server-1.0)
+
+
+./test-launch "videotestsrc is-live=1 ! nvvidconv ! nvv4l2h264enc ! h264parse ! rtph264pay name=pay0 pt=96"
+
+At client side, if the device is a PC with Windows OS, you can open network stream 
+rtsp://<SERVER_IP_ADDRESS>:8554/test via VLC. If it is a Jetson device, you can run the command:
+
+gst-launch-1.0 uridecodebin uri=rtsp://<SERVER_IP_ADDRESS>:8554/test ! nvoverlaysink
+
+
+
+
+IP_ADDRESS=192.168.3.191
+PORT=8554
+MAPPING=test
+
+echo uri=rtsp://${IP_ADDRESS}:${PORT}/${MAPPING}
+gst-launch-1.0 playbin uri=rtsp://${IP_ADDRESS}:${PORT}/${MAPPING}
+
+
+
+
+Virtually no latency :
+
+./test-launch "nvarguscamerasrc ! video/x-raw(memory:NVMM),width=640,height=480,framerate=25/1 ! nvvidconv ! video/x-raw(memory:NVMM),format=I420 ! nvjpegenc ! rtpjpegpay name=pay0 pt=26 "
+
+
+ffplay -rtsp_transport udp rtsp://${IP_ADDRESS}:${PORT}/${MAPPING} -vf "setpts=N/25" -fflags nobuffer -flags low_delay -framedrop
+
+
+
 
 
 ```

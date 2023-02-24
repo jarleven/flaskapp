@@ -1,0 +1,6 @@
+### NVIDIA Jetson Nano and Ubuntu L4T 
+
+ * https://forums.developer.nvidia.com/t/stream-csi-camera-to-http-in-mjpeg-format/179204/12
+ * https://forums.developer.nvidia.com/t/i-want-to-know-how-to-send-mjpeg-fast/176090
+ * https://developer.ridgerun.com/wiki/index.php/GstRtspSink_-_Simple_Examples
+ * https://gist.github.com/reinzor/812a1dadd62dcf2a309c9c99af92244f
