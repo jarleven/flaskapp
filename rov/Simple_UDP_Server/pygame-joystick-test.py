@@ -80,9 +80,9 @@ STEER = 2
 def send_udp(motorL, motorR):
     print("Sending data to motor")
 
+    #message=("%s,%s,s\n" % (str(int(motorL * 255)), str(int(motorR * 255))))
+    message=("o %s %s\r" % (str(int(motorL * 255)), str(int(motorR * 255))))
 
-    message=("%s,%s,s\n" % (str(int(motorL * 255)), str(int(motorR * 255))))
-    #message = "40,30,s".format(power,turn)
     print(message)
     sock.sendto(bytes(message, "utf-8"), (UDP_IP, UDP_PORT))
 

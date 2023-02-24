@@ -34,6 +34,7 @@ try:
     for i in range(100):
         #serialdata=("%s,%s,s\n" % (str(int(right * 255)), str(int(left * 255))))
         serialdata=("o %s %s\r" % (str(int(right * 255)), str(int(left * 255))))
+
         if ser.out_waiting < 20:
 
             print("Busy is %d written %d" % (busy, write))

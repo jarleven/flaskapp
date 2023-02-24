@@ -103,8 +103,9 @@ def main():
             # Trigger stick events and check for quit
             keepRunning = cnt.controllerStatus()
     
-            message=("%s,%s,s\n" % (str(int(right * 255)), str(int(left * 255))))
-            #message = "40,30,s".format(power,turn)
+            #message=("%s,%s,s\n" % (str(int(right * 255)), str(int(left * 255))))
+            message=("o %s %s\r" % (str(int(right * 255)), str(int(left * 255))))
+
             print(message)
             sock.sendto(bytes(message, "utf-8"), (UDP_IP, UDP_PORT))
             #motorSpeed(power, turn)

@@ -6,6 +6,8 @@ import serial
 import serial.tools.list_ports
 import time
 
+# python3 -m pip install pyserial
+
 
 UDP_IP = "0.0.0.0"
 UDP_PORT = 5005
