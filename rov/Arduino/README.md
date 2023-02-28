@@ -21,8 +21,10 @@ sudo apt remove brltty
 CH341 driver 
 * http://www.wch-ic.com/products/CH341.html
 
+![Create HEX file](https://skjoldtech.files.wordpress.com/2019/05/arduino.png)
 
-[[https://skjoldtech.files.wordpress.com/2019/05/arduino.png|alt=Create HEX file]]
+
+
 
 
 
