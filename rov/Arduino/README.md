@@ -12,7 +12,7 @@ sudo usermod -a -G dialout pi
 sudo avrdude -v -V -p atmega328p -c arduino -P /dev/ttyACM0 -b 115200 -D -U flash:w:/home/pi/flaskapp/rov/Arduino/usbPWM/build/arduino.avr.uno/usbPWM.ino.hex:i
 ```
 
-### Fix issue (Was using Ubuntu 22.10) with Chinese Arduino clone
+### Fix issue with Chinese Arduino clone - was using Ubuntu 22.10
 ```
 ch341-uart ttyUSB0: ch341-uart converter now disconnected from ttyUSB0
 sudo apt remove brltty
