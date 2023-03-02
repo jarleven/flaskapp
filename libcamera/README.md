@@ -8,6 +8,8 @@
 Just a few things tried 24.02.2023
 ```bash
 
+nvgstcapture-1.0 --orientation=2
+
 Virtually no latency :
 
 ####
