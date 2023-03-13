@@ -1,44 +1,38 @@
 
 
+### TP-LINK Archer T3U Plus
+```
+https://www.tp-link.com/no/home-networking/high-gain-adapter/archer-t3u-plus/
 
- * https://forums.raspberrypi.com/viewtopic.php?t=184155
+WI1 chip1: Realtek RTL8812BU
+
+Works on Pi4 / Bullseye :
+	https://github.com/morrownr/88x2bu-20210702
+
+
+sudo apt update && sudo apt upgrade
+sudo apt install -y build-essential
+sudo apt install -y raspberrypi-kernel-headers build-essential bc dkms git
+
+
+git clone https://github.com/morrownr/88x2bu-20210702.git
+cd 88x2bu-20210702
+sudo ./install-driver.sh
+
+sudo vi /boot/config.txt
+
+[all]
+dtoverlay=disable-wifi
+dtoverlay=disable-bt
+
 
 ```
 
-Re: Disable onboard wifi and use dongle, any ideas?
-Mon Jun 12, 2017 10:31 am
-
-I've used both overlays and blacklist option, usb dongle works fine.
-
-"sudo nano /boot/config.txt"
-
-dtoverlay=pi3-disable-bt
-dtoverlay=pi3-disable-wifi
-
-"sudo systemctl disable hciuart"
-
-"sudo nano /etc/modprobe.d/raspi-blacklist.conf"
-
-#wifi
-blacklist brcmfmac
-blacklist brcmutil
-#bt
-blacklist btbcm
-blacklist hci_uart
-
-```
-
-
-## WiFi status 
+ 
+### WiFi status 
  * https://github.com/uoaerg/wavemon
 
-
  * watch -n1 iwconfig
+ * sudo iwlist wlan0 scan
+ * sudo iw dev
 
-
-USB3 adapter
-
-TP-Link AC1300
-Archer T3U Plus
-
-Realtek 8812AU
