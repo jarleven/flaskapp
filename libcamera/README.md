@@ -23,6 +23,12 @@ ffplay -rtsp_transport udp rtsp://${IP_ADDRESS}:${PORT}/${MAPPING} -vf "setpts=N
 
 ####
 
+### Bilid test-launch and download dependencies 
+sudo apt-get install libgstrtspserver-1.0 libgstreamer1.0-dev
+wget https://raw.githubusercontent.com/GStreamer/gst-rtsp-server/1.14.5/examples/test-launch.c
+gcc test-launch.c -o test-launch $(pkg-config --cflags --libs gstreamer-1.0 gstreamer-rtsp-server-1.0)
+###
+
 Tested on Win10 "player" 
  * https://www.gyan.dev/ffmpeg/builds/
  * https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-5.0.1-full_build.7z
