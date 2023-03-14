@@ -19,7 +19,7 @@ git clone https://github.com/morrownr/88x2bu-20210702.git
 cd 88x2bu-20210702
 sudo ./install-driver.sh
 
-sudo vi /boot/config.txt  # Legg til overaly i [all] seksjonen
+sudo vi /boot/config.txt  # Legg til dtoverlay i [all] seksjonen
 
 [all]
 dtoverlay=disable-wifi
