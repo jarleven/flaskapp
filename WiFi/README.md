@@ -1,14 +1,14 @@
 
 
 ### TP-LINK Archer T3U Plus
-```bash
+```
 https://www.tp-link.com/no/home-networking/high-gain-adapter/archer-t3u-plus/
 
 WI1 chip1: Realtek RTL8812BU
+```
 
-Works on Pi4 / Bullseye :
-	https://github.com/morrownr/88x2bu-20210702
-
+### Works on Pi4 / Bullseye : https://github.com/morrownr/88x2bu-20210702
+```bash
 
 sudo apt update && sudo apt upgrade
 sudo apt install -y build-essential
@@ -19,12 +19,14 @@ git clone https://github.com/morrownr/88x2bu-20210702.git
 cd 88x2bu-20210702
 sudo ./install-driver.sh
 
+
+### Disable the onboard WiFi on Raspberry Pi
+```bash
 sudo vi /boot/config.txt  # Legg til dtoverlay i [all] seksjonen
 
 [all]
 dtoverlay=disable-wifi
 dtoverlay=disable-bt
-
 
 ```
 
