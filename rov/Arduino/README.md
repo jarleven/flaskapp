@@ -4,7 +4,7 @@ Nice guide at :
 * https://skjoldtech.wordpress.com/2019/05/10/flashing-arduino-hex-file-in-linux-with-avrdude/
 
 ```
-sudo apt-get install avrdude
+sudo apt-get install -y avrdude
 
 sudo usermod -a -G dialout $USER
 #sudo chmod a+rw /dev/ttyUSB0
