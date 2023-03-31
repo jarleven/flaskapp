@@ -6,7 +6,7 @@ Nice guide at :
 ```
 sudo apt-get install avrdude
 
-sudo usermod -a -G dialout pi
+sudo usermod -a -G dialout $USER
 #sudo chmod a+rw /dev/ttyUSB0
 
 sudo avrdude -v -V -p atmega328p -c arduino -P /dev/ttyACM0 -b 115200 -D -U flash:w:/home/pi/flaskapp/rov/Arduino/usbPWM/build/arduino.avr.uno/usbPWM.ino.hex:i
